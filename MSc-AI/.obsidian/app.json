@@ -1,0 +1,10 @@
+{
+  "newFileLocation": "folder",
+  "newFileFolderPath": "00-Inbox",
+  "attachmentFolderPath": "60-Assets",
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "alwaysUpdateLinks": true,
+  "showUnsupportedFiles": false,
+  "promptDelete": true
+}

@@ -1,0 +1,290 @@
+id: https://msc-ai.example/schema/msc-ai
+name: msc-ai
+title: MSc Artificial Intelligence domain extension
+description: >-
+  Gives the MSc-AI bundle its own small vocabulary on top of LOKF core, per
+  lokf-agent-skills' domain-schemas.md guidance ("give the domain its own
+  schema" rather than inventing a validation mechanism). LOKF's generated
+  JSON Schema sets `additionalProperties: false` on every concept class, so a
+  concept using a project-specific `type` (Programme, Module,
+  VerificationIssue, ...) or carrying a project-specific slot fails
+  structural validation even though the LOKF *spec* prose says consumers
+  "MUST tolerate unknown types/keys" - that tolerance is an RDF/JSON-LD
+  consumption rule, not a JSON-Schema one. This file is what makes
+  `lokf validate --schema msc-ai.yaml` accept this bundle's real shape.
+license: https://creativecommons.org/licenses/by/4.0/
+version: 0.1.0
+
+imports:
+  - linkml:types
+  - lokf   # ./lokf.yaml, a pinned copy of the schema this bundle targets (0.7.0)
+
+default_range: string
+default_prefix: msc
+
+prefixes:
+  msc: https://msc-ai.example/schema/msc-ai/
+  linkml: https://w3id.org/linkml/
+  lokf: https://w3id.org/lokf/
+
+# ---------------------------------------------------------------------------
+# Classes
+#
+# Three are wholly new domain concepts (Programme, Module, VerificationIssue)
+# - none of LOKF's 14 built-ins fit, which the spec explicitly permits.
+# Four are new concepts too (DeliveryPattern, AssessmentPattern,
+# LearningOutcomeSet, ProjectPattern) rather than force-fitting them onto the
+# built-in Policy class, which doesn't describe them well ("a governance,
+# compliance, or operational policy document" is a stretch for "how the
+# programme is delivered online").
+#
+# Two subclass a built-in whose semantics DO fit, adding only the extra
+# slots the source data actually carries: SourceSnapshotReference (is_a
+# Reference - "mirrors an external source... so it can be cited" fits a
+# preserved source snapshot exactly) and IngestionPlaybook (is_a Playbook -
+# "a procedure... an ordered set of steps" fits the ingestion process).
+#
+# Their frontmatter `type:` is the SUBCLASS name, not the parent's - tested
+# empirically: LinkML generates each concrete class's `type` property as
+# `const: <ClassName>`, so `type: Reference` on a record carrying file_name/
+# source_kind/etc. fails every anyOf branch (Reference's own schema rejects
+# the extra keys via additionalProperties: false; SourceSnapshotReference's
+# schema requires `type` to literally read "SourceSnapshotReference"). `is_a`
+# still makes each one rdfs:subClassOf its parent for real RDF/OWL reasoning
+# - only the raw frontmatter string differs from the plain parent name.
+# ---------------------------------------------------------------------------
+classes:
+
+  Programme:
+    is_a: Concept
+    description: >-
+      A named degree programme - the organising structure for a learning
+      knowledge bundle. Not a LOKF built-in; no existing class fits.
+    slots:
+      - programme_code
+      - award
+      - nfq_level
+      - delivery_mode
+      - study_mode
+      - duration_years
+      - total_ects
+      - claimed_taught_module_count
+      - claimed_taught_ects
+      - capstone_ects
+      - average_intake
+      - next_intake
+      - estimated_hours_per_week
+      - weeks_per_semester
+      - on_campus_examinations
+
+  Module:
+    is_a: Concept
+    description: A single curriculum entry within a Programme.
+    slots:
+      - module_code
+      - curriculum_label
+      - ects
+      - semester
+      - year
+      - component_kind
+
+  VerificationIssue:
+    is_a: Concept
+    description: >-
+      An open question about a source-backed claim, tracked rather than
+      silently resolved or dropped.
+    slots:
+      - claimed_taught_modules
+      - observed_named_topics
+      - observed_curriculum_entries
+      - observed_non_capstone_entries
+      - suspect_categories
+      - source_heading
+      - programme_duration_years
+      - programme_total_ects
+      - resolution
+
+  DeliveryPattern:
+    is_a: Concept
+    description: How a programme is delivered - timing, mode, workload.
+    slots:
+      - teaching_blocks
+      - weeks_per_semester
+      - study_week
+      - exam_period
+      - estimated_hours_per_week
+      - exam_months
+
+  AssessmentPattern:
+    is_a: Concept
+    description: The learning activities and assessment forms a programme uses.
+    slots:
+      - learning_activities
+      - assessment_forms
+      - weekly_feedback_claimed
+
+  LearningOutcomeSet:
+    is_a: Concept
+    description: A named set of programme-level learning outcomes.
+    slots:
+      - outcomes
+
+  ProjectPattern:
+    is_a: Concept
+    description: The shape of a capstone or major project component.
+    slots:
+      - start
+      - submission
+      - focus_options
+      - ects
+
+  SourceSnapshotReference:
+    is_a: Reference
+    description: >-
+      A Reference that preserves a snapshot of the raw source material it
+      mirrors, with acquisition metadata. rdfs:subClassOf lokf:Reference;
+      frontmatter uses this class's own name as `type:` (see note above).
+    slots:
+      - file_name
+      - source_kind
+      - reviewed_at
+      - content_hash
+
+  IngestionPlaybook:
+    is_a: Playbook
+    description: >-
+      A Playbook describing a rerunnable knowledge-acquisition process, with
+      its own input/output/mode metadata. rdfs:subClassOf lokf:Playbook;
+      frontmatter uses this class's own name as `type:`.
+    slots:
+      - inputs
+      - outputs
+      - mode
+      - protected_layers
+
+# ---------------------------------------------------------------------------
+# Slots - one definition per name; classes above reference them by name, so
+# a name used by more than one class (ects, weeks_per_semester,
+# estimated_hours_per_week) keeps one consistent meaning everywhere.
+# ---------------------------------------------------------------------------
+slots:
+  programme_code:
+    description: The institution's short code for the programme (e.g. 1MAO3).
+  award:
+    description: The qualification awarded (e.g. Master of Science).
+  nfq_level:
+    description: National Framework of Qualifications level.
+    range: integer
+  delivery_mode:
+    description: How the programme is delivered (e.g. online, on-campus).
+  study_mode:
+    description: Full-time or part-time.
+  duration_years:
+    description: Nominal programme duration in years.
+    range: integer
+  total_ects:
+    description: Total ECTS credits for the programme.
+    range: integer
+  claimed_taught_module_count:
+    description: The module count the source claims, kept separate from observed counts pending reconciliation.
+    range: integer
+  claimed_taught_ects:
+    description: Taught-module ECTS the source claims.
+    range: integer
+  capstone_ects:
+    description: ECTS assigned to the capstone component.
+    range: integer
+  average_intake:
+    description: Typical cohort size.
+    range: integer
+  next_intake:
+    description: When the next cohort starts.
+  estimated_hours_per_week:
+    description: Estimated study workload during teaching weeks.
+    range: integer
+  weeks_per_semester:
+    description: Teaching weeks per semester.
+    range: integer
+  on_campus_examinations:
+    description: Whether examinations require on-campus attendance.
+    range: boolean
+
+  module_code:
+    description: The institution's module code (e.g. CT5148).
+  curriculum_label:
+    description: The source's core/optional classification for this entry.
+  ects:
+    description: ECTS credits for this component.
+    range: integer
+  semester:
+    description: Which semester this runs in, once confirmed.
+    range: integer
+  year:
+    description: Which programme year this runs in, once confirmed.
+    range: integer
+  component_kind:
+    description: The kind of curriculum component (e.g. curriculum-entry, capstone).
+
+  claimed_taught_modules:
+    range: integer
+  observed_named_topics:
+    range: integer
+  observed_curriculum_entries:
+    range: integer
+  observed_non_capstone_entries:
+    range: integer
+  suspect_categories:
+    multivalued: true
+  source_heading:
+    description: The exact heading text found in the source, quoted for verification.
+  programme_duration_years:
+    range: integer
+  programme_total_ects:
+    range: integer
+  resolution:
+    description: What would resolve this issue (e.g. which sources to compare).
+
+  teaching_blocks:
+    multivalued: true
+  study_week:
+    range: boolean
+  exam_period:
+    range: boolean
+  exam_months:
+    multivalued: true
+
+  learning_activities:
+    multivalued: true
+  assessment_forms:
+    multivalued: true
+  weekly_feedback_claimed:
+    range: boolean
+
+  outcomes:
+    multivalued: true
+
+  start:
+    description: When this component starts (e.g. "Year 1 Semester 2").
+  submission:
+    description: When this component is submitted (e.g. "August Year 2").
+  focus_options:
+    multivalued: true
+
+  file_name:
+    description: The original supplied file name, for a locally-sourced snapshot.
+  source_kind:
+    description: A short classifier for the kind of source (e.g. official-programme-page).
+  reviewed_at:
+    description: When this source was last reviewed.
+    range: date
+  content_hash:
+    description: A content hash of the source, once computed.
+
+  inputs:
+    multivalued: true
+  outputs:
+    multivalued: true
+  mode:
+    description: The activity's operating mode (e.g. incremental-upsert-by-stable-id).
+  protected_layers:
+    multivalued: true

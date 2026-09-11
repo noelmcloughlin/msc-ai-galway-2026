@@ -1,0 +1,78 @@
+{
+  "knownTypes": [
+    "Dataset",
+    "Table",
+    "Metric",
+    "Service",
+    "Playbook",
+    "Tutorial",
+    "Explanation",
+    "Policy",
+    "GlossaryTerm",
+    "Reference",
+    "Document",
+    "Person",
+    "Organization",
+    "AttestedComputation",
+    "Role",
+    "Programme",
+    "Module",
+    "VerificationIssue",
+    "DeliveryPattern",
+    "AssessmentPattern",
+    "LearningOutcomeSet",
+    "ProjectPattern",
+    "SourceSnapshotReference",
+    "IngestionPlaybook"
+  ],
+  "warnUnknownType": true,
+  "genreValues": [
+    "tutorial",
+    "how-to",
+    "reference",
+    "explanation"
+  ],
+  "warnTypeSpecificFields": true,
+  "knownPredicates": [
+    "isPartOf",
+    "hasPart",
+    "references",
+    "dependsOn",
+    "derivedFrom",
+    "about",
+    "sameAs",
+    "relatedTo",
+    "definedBy",
+    "source",
+    "joinsWith",
+    "wasAttributedTo",
+    "measures",
+    "memberOf",
+    "holder"
+  ],
+  "warnUnknownPredicate": false,
+  "authorityDenylist": [
+    "github.com",
+    "githubusercontent.com",
+    "gitlab.com",
+    "bitbucket.org",
+    "sourceforge.net",
+    "npmjs.com",
+    "pypi.org"
+  ],
+  "placeholderDomains": [
+    "example.com",
+    "example.org",
+    "example.net",
+    "example"
+  ],
+  "warnMissingHeader": true,
+  "checkRelationTargets": true,
+  "excludeFolders": [],
+  "batchSize": 50,
+  "recommendSiblingPlugin": true,
+  "bundleRoots": [
+    "knowledge_bundle"
+  ],
+  "siblingNoticeShown": false
+}

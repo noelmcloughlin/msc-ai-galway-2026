@@ -1,0 +1,10 @@
+msc-ai-galway-2026
+Copyright 2026 Noel McLoughlin
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product implements the Linked Open Knowledge Format (LOKF) specification: https://lokf.nolan-nichols.com/specification/
+
+LOKF is a semantic profile of the Open Knowledge Format (OKF) specification by Google Cloud Platform:
+https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
+
