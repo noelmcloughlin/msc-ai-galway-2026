@@ -31,6 +31,8 @@ Prof Michael Madden holds the role of listed teaching team member on programme 1
 ## Bundle navigation
 
 - **derivedFrom:** [https://msc-ai.example/knowledge/sources/source-snapshot-reference-uog-extract-2026](../sources/source-snapshot-reference-uog-extract-2026.md)
+- **holder:** [https://msc-ai.example/knowledge/people/person-michael-madden](person-michael-madden.md)
+- **memberOf:** [https://msc-ai.example/knowledge/people/organization-teaching-team](organization-teaching-team.md)
 
 ## Curation note
 

@@ -22,7 +22,7 @@ component_kind: capstone
 
 # Capstone Project and Thesis in Artificial Intelligence - Online
 
-Capstone Project and Thesis in Artificial Intelligence - Online is an official curriculum entry in the supplied 2026 programme extract. Semester, year and ECTS remain unset unless explicitly supported by the reviewed source. Detailed learning outcomes, assessment weighting, prerequisites and reading lists are delegated to the offline acquisition workflow.
+Capstone Project and Thesis in Artificial Intelligence - Online is an official curriculum entry in the supplied 2026 programme extract. It carries 30 ECTS, per the reviewed source; semester and year remain unset unless explicitly supported by the reviewed source. Detailed learning outcomes, assessment weighting, prerequisites and reading lists are delegated to the offline acquisition workflow.
 
 ## Record profile
 

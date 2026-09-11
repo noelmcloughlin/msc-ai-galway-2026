@@ -31,6 +31,8 @@ Dr Jamal Nasir holds the role of programme director on programme 1MAO3, as liste
 ## Bundle navigation
 
 - **derivedFrom:** [https://msc-ai.example/knowledge/sources/source-snapshot-reference-uog-extract-2026](../sources/source-snapshot-reference-uog-extract-2026.md)
+- **holder:** [https://msc-ai.example/knowledge/people/person-jamal-nasir](person-jamal-nasir.md)
+- **memberOf:** [https://msc-ai.example/knowledge/people/organization-teaching-team](organization-teaching-team.md)
 
 ## Curation note
 

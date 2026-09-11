@@ -31,6 +31,8 @@ Dr James McDermott holds the role of listed teaching team member on programme 1M
 ## Bundle navigation
 
 - **derivedFrom:** [https://msc-ai.example/knowledge/sources/source-snapshot-reference-uog-extract-2026](../sources/source-snapshot-reference-uog-extract-2026.md)
+- **holder:** [https://msc-ai.example/knowledge/people/person-james-mcdermott](person-james-mcdermott.md)
+- **memberOf:** [https://msc-ai.example/knowledge/people/organization-teaching-team](organization-teaching-team.md)
 
 ## Curation note
 

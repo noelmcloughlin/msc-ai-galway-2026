@@ -5,7 +5,7 @@ description:
 module:
 about:
 tags: [lecture]
-created: <% tp.date.now("YYYY-MM-DD") %>
+created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 ---
 
 # <% tp.file.title %>

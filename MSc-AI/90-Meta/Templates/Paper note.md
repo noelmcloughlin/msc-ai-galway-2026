@@ -8,8 +8,9 @@ authors: []
 year:
 venue:
 about:
-tags: [paper]
-created: <% tp.date.now("YYYY-MM-DD") %>
+tags:
+  - paper
+created: <% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>
 ---
 
 # <% tp.file.title %>

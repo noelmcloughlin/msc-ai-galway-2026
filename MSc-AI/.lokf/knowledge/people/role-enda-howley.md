@@ -31,6 +31,8 @@ Dr Enda Howley holds the role of listed teaching team member on programme 1MAO3,
 ## Bundle navigation
 
 - **derivedFrom:** [https://msc-ai.example/knowledge/sources/source-snapshot-reference-uog-extract-2026](../sources/source-snapshot-reference-uog-extract-2026.md)
+- **holder:** [https://msc-ai.example/knowledge/people/person-enda-howley](person-enda-howley.md)
+- **memberOf:** [https://msc-ai.example/knowledge/people/organization-teaching-team](organization-teaching-team.md)
 
 ## Curation note
 

@@ -74,5 +74,5 @@
   "bundleRoots": [
     "knowledge_bundle"
   ],
-  "siblingNoticeShown": false
+  "siblingNoticeShown": true
 }

@@ -6,7 +6,7 @@ description:
 module:
 about:
 tags: [lab]
-created: <% tp.date.now("YYYY-MM-DD") %>
+created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 ---
 
 # <% tp.file.title %>
