@@ -2,26 +2,24 @@
 
 An Obsidian vault for a two-year, part-time MSc in Computer Science (Artificial Intelligence) at University of Galway - built as a working example of the [LOKF](https://lokf.nolan-nichols.com) ecosystem: agent skills that scaffold and maintain a knowledge bundle, a domain schema extension, and two companion Obsidianplugins, all pointed at the same files.
 
-Full rationale in: **[DESIGN.md](DESIGN.md)**.
-
 This file is the front door - open here first.
 
 ## Layout
 
 ```
-msc-ai-galway-2026/                  ← git root; run skills and just recipes from here
-├── .agents/skills/         ← the 4 lokf-agent-skills (scaffolding, librarian, curator, docent)
-├── inputs/                 ← research material and the original programme-data export
-├── DESIGN.md                 ← why everything below looks the way it does
-└── MSc-AI/                 ← THE OBSIDIAN VAULT - open THIS folder in Obsidian
-    ├── .obsidian/plugins/  ← lokf-enforcer, lokf-curator, templater-obsidian
-    ├── .lokf/              ← the LOKF knowledge bundle (hidden from Obsidian's index)
-    │   ├── lokf.yaml       ← pinned copy of the core LOKF schema (0.7.0)
-    │   ├── msc-ai.yaml     ← this bundle's domain extension (see below)
-    │   └── knowledge/      ← 50 concepts: programme, modules, people, sources, issues...
-    ├── knowledge_bundle -> .lokf/knowledge   ← visible symlink; how Obsidian sees the bundle
-    ├── 00-Inbox/ … 99-Archive/              ← lifecycle folders for everyday notes
-    └── 01-Dashboard/CONVENTIONS.md          ← the vault's own house style
+msc-ai-galway-2026/         - git root; run skills and just recipes from here
+├── .agents/skills/         - the 4 lokf-agent-skills (scaffolding, librarian, curator, docent)
+├── inputs/                 - research material and the original programme-data export
+├── DESIGN.md               - why everything below looks the way it does
+└── MSc-AI/                 - THE OBSIDIAN VAULT - open THIS folder in Obsidian
+    ├── .obsidian/plugins/  - lokf-enforcer, lokf-curator, templater-obsidian
+    ├── .lokf/              - the LOKF knowledge bundle (hidden from Obsidian's index)
+    │   ├── lokf.yaml       - pinned copy of the core LOKF schema (0.7.0)
+    │   ├── msc-ai.yaml     - this bundle's domain extension (see below)
+    │   └── knowledge/      - 50 concepts: programme, modules, people, sources, issues...
+    ├── knowledge_bundle -> .lokf/knowledge   - visible symlink; how Obsidian sees the bundle
+    ├── 00-Inbox/ … 99-Archive/              - lifecycle folders for everyday notes
+    └── 01-Dashboard/CONVENTIONS.md          - the vault's own house style
 ```
 
 Two documents, two audiences: **DESIGN.md** is the design record (read it to understand *why*); **`MSc-AI/01-Dashboard/CONVENTIONS.md`** is the vault's own quick reference (read it while actually taking notes). This README is neither - it's how to get the whole thing running.
