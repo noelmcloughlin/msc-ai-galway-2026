@@ -7,7 +7,7 @@
   with no services - and the domain directories `programme/`, `modules/`, `people/`,
   `sources/`, `issues/`, `glossary/` and `concepts/` created empty in their place.
 
-* **Migration**: Materialised 50 concepts from `inputs/starter.json` (a hand-curated,
+* **Migration**: Materialised 50 concepts from `inputs/` (a hand-curated,
   46-record export using a bespoke `msc-ai-learning-profile` vocabulary), fixing it onto this
   bundle's LOKF vocabulary in the same pass:
   - `status` remapped onto `draft|stable|deprecated` (`active`->`stable`,
@@ -46,7 +46,7 @@
     `assertion:<value>` rather than a raw top-level key - see "Schema extension" below for why.
 
   Verified before and after: zero bare-scalar values in multivalued relation slots, zero
-  dangling relation targets. `inputs/starter.json` is left untouched as the historical import
+  dangling relation targets. `inputs/` is left untouched as the historical import
   record.
 
 * **Schema extension**: The first `just lokf-validate` pass on the migrated bundle failed on
@@ -75,3 +75,36 @@
   and didn't avoid needing an extension anyway, so all four kept their own honest class names.
 
   `just lokf-validate` and `just lokf-check-refs` now both pass cleanly on all 50 concepts.
+
+* **First steady-state refresh**: Re-verified provenance for all 50 concepts by fetching the
+  live `resource` of every concept that has one (the UoG public page and, for the first time,
+  the ICT Skillnet partner page), rather than trusting a summarised re-read - a raw-HTML grep
+  caught wording an AI summary of the same page reported as absent. Findings:
+  - Every one of the 14 taught modules (all but the capstone) had `ects`/`semester` confirmed
+    directly from the official page's own per-module accordion text (`Semester N | Credits: 5`)
+    and added; the generic "ECTS not yet confirmed" body sentence is now specific per module.
+    `year` stays unset - the source disagrees with itself on it (see below).
+  - `verification-issue-core-optional-status` gained the partner page's actual per-module
+    Core/Optional split (6 Core, 7 Optional) and the finding that it omits `CT5186` entirely;
+    added `partner_core_modules`/`partner_optional_modules`/`missing_from_partner_modules` to
+    `msc-ai.yaml`'s `VerificationIssue` class for this.
+  - `verification-issue-module-count` gained a second, independent occurrence of the same
+    contradiction shape: the partner page's own "30 + 30 ECTS taught" claim undercounts its own
+    13-module itemised list by one module, exactly as the official page's "12 taught modules"
+    undercounts its own 13-14-15 breakdown.
+  - `verification-issue-year-credit-heading` gained corroborating (not resolving) detail: the
+    partner page confirms the programme spans two years by spreading modules across explicit
+    "Year 1"/"Year 2" headings, something the official page's single "Year 1 (90 Credits)"
+    heading does not do.
+  - Added `playbooks/knowledge-sources.md` - the source map the bootstrap step should have
+    produced originally; this bundle's first 50 concepts came from a hand-curated migration
+    instead of a repository sweep, so the map was never written until now.
+  - Swept the host vault for orphan content: every `10-Programme/Modules/`, `20-Learning/`,
+    `30-Knowledge/Concepts/`, `40-Research/`, `50-Projects/`, `60-Assets/` and `99-Archive/`
+    directory holds only placeholders; nothing yielded a new concept.
+  - Added a `verified: [{ by: process:lokf-librarian, at }]` event to the 30 concepts whose
+    `resource` was re-checked and found unchanged, and a `generated` block to the 18 concepts
+    materially changed above (14 modules, 3 issues, 1 new playbook).
+  - `lokf` sidecar already at the latest PyPI release (0.7.0); no floor bump needed.
+
+  `just lokf-validate` and `just lokf-check-refs` pass cleanly on all 51 concepts.

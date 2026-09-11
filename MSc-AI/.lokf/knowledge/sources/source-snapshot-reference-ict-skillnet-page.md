@@ -6,6 +6,9 @@ description: The Technology Ireland ICT Skillnet partner page for the programme,
 resource: "https://ictskillnet.ie/courses/msc-in-computer-science-artificial-intelligence/"
 status: stable
 version: 1.0.0
+verified:
+  - by: process:lokf-librarian
+    at: "2026-09-11T00:00:00Z"
 tags:
   - "assertion:source-backed"
 source_kind: official-partner-programme-page

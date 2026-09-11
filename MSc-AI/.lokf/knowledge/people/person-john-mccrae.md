@@ -6,6 +6,9 @@ description: Dr John McCrae, listed teaching team member, per the 2026 programme
 resource: "https://www.universityofgalway.ie/courses/taught-postgraduate-courses/online-artificial-intelligence.html"
 status: stable
 version: 1.0.0
+verified:
+  - by: process:lokf-librarian
+    at: "2026-09-11T00:00:00Z"
 tags:
   - "assertion:source-backed"
 isPartOf:

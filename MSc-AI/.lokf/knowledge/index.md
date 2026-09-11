@@ -27,7 +27,7 @@ owned namespace - consistent with the other LOKF bundles in this author's projec
 every concept `@id`, so migrating it later rewrites all of them; cheap now, expensive later.
 
 Scaffolded 2026-09-11 and materialised the same day from a hand-curated source extract
-(`inputs/starter.json`), migrated onto this bundle's LOKF vocabulary - see `log.md` for the
+(`inputs/`), migrated onto this bundle's LOKF vocabulary - see `log.md` for the
 fix-list applied. This bundle carries a small domain extension, `msc-ai.yaml` (imports
 `lokf.yaml`, a pinned copy of the core schema alongside it) - `just lokf-validate` uses it
 automatically; see `msc-ai.yaml`'s header comment for why one was needed. `Concepts` is still
@@ -40,21 +40,21 @@ contents from here on.
 
 # Modules
 
-* [Agents, Multi-Agent Systems and Reinforcement Learning - Online](modules/module-ct5130.md) - CT5130, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Artificial Intelligence and Ethics - Online](modules/module-ct5152.md) - CT5152, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
+* [Agents, Multi-Agent Systems and Reinforcement Learning - Online](modules/module-ct5130.md) - CT5130, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
+* [Artificial Intelligence and Ethics - Online](modules/module-ct5152.md) - CT5152, a curriculum entry in programme 1MAO3. Semester 1, 5 ECTS.
 * [Capstone Project and Thesis in Artificial Intelligence - Online](modules/module-ct5131.md) - CT5131, a curriculum entry in programme 1MAO3. Capstone entry (30 ECTS).
-* [Data Visualisation - Online](modules/module-ct5136.md) - CT5136, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Deep Learning - Online](modules/module-ct5145.md) - CT5145, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Future of Artificial Intelligence](modules/module-ct5186.md) - CT5186, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [High Performance Computing and Parallel Programming](modules/module-ph504.md) - PH504, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Information Retrieval - Online](modules/module-ct5153.md) - CT5153, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Introduction to Natural Language Processing - Online](modules/module-ct5146.md) - CT5146, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Knowledge Representation - Online](modules/module-ct5188.md) - CT5188, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Principles of Machine Learning - Online](modules/module-ct5170.md) - CT5170, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Programming and Tools for Artificial Intelligence - Online](modules/module-ct5148.md) - CT5148, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Research Skills in Artificial Intelligence](modules/module-ct5144.md) - CT5144, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Statistics for Artificial Intelligence](modules/module-st5001.md) - ST5001, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
-* [Tools and Techniques for Large Scale Data Analytics - Online](modules/module-ct5150.md) - CT5150, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
+* [Data Visualisation - Online](modules/module-ct5136.md) - CT5136, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
+* [Deep Learning - Online](modules/module-ct5145.md) - CT5145, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
+* [Future of Artificial Intelligence](modules/module-ct5186.md) - CT5186, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
+* [High Performance Computing and Parallel Programming](modules/module-ph504.md) - PH504, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
+* [Information Retrieval - Online](modules/module-ct5153.md) - CT5153, a curriculum entry in programme 1MAO3. Semester 1, 5 ECTS.
+* [Introduction to Natural Language Processing - Online](modules/module-ct5146.md) - CT5146, a curriculum entry in programme 1MAO3. Semester 1, 5 ECTS.
+* [Knowledge Representation - Online](modules/module-ct5188.md) - CT5188, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
+* [Principles of Machine Learning - Online](modules/module-ct5170.md) - CT5170, a curriculum entry in programme 1MAO3. Semester 1, 5 ECTS.
+* [Programming and Tools for Artificial Intelligence - Online](modules/module-ct5148.md) - CT5148, a curriculum entry in programme 1MAO3. Semester 1, 5 ECTS.
+* [Research Skills in Artificial Intelligence](modules/module-ct5144.md) - CT5144, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
+* [Statistics for Artificial Intelligence](modules/module-st5001.md) - ST5001, a curriculum entry in programme 1MAO3. Semester 1, 5 ECTS.
+* [Tools and Techniques for Large Scale Data Analytics - Online](modules/module-ct5150.md) - CT5150, a curriculum entry in programme 1MAO3. Semester 2, 5 ECTS.
 
 # People
 
@@ -89,7 +89,7 @@ contents from here on.
 # Issues
 
 * [Apparently unrelated assessment wording](issues/verification-issue-assessment-leakage.md) - Grammar/translation-course wording in the source looks unrelated to an AI programme.
-* [Core and optional classification conflict](issues/verification-issue-core-optional-status.md) - The source labels every module Optional; the partner page distinguishes core and optional components.
+* [Core and optional classification conflict](issues/verification-issue-core-optional-status.md) - The official page labels every module Optional; the partner page classifies 13 of the 14 as Core or Optional.
 * [Module-count contradiction](issues/verification-issue-module-count.md) - The source claims 12 taught modules but names 13 topics and lists 15 curriculum entries.
 * [Year and credit heading inconsistency](issues/verification-issue-year-credit-heading.md) - The source's 'Year 1 (90 Credits)' heading conflicts with the programme's stated 2-year, 90-ECTS structure.
 
@@ -100,6 +100,7 @@ contents from here on.
 # Playbooks
 
 * [Offline LOKF knowledge acquisition](playbooks/ingestion-playbook-offline-ingestion.md) - How this bundle is refreshed from source material without overwriting personal learning.
+* [Knowledge sources map](playbooks/knowledge-sources.md) - Where this bundle's concepts come from, and how to re-check each source.
 
 # Programme Patterns
 

@@ -102,6 +102,9 @@ classes:
       - source_heading
       - programme_duration_years
       - programme_total_ects
+      - partner_core_modules
+      - partner_optional_modules
+      - missing_from_partner_modules
       - resolution
 
   DeliveryPattern:
@@ -241,6 +244,15 @@ slots:
     range: integer
   programme_total_ects:
     range: integer
+  partner_core_modules:
+    description: Module codes the partner page classifies as Core.
+    multivalued: true
+  partner_optional_modules:
+    description: Module codes the partner page classifies as Optional.
+    multivalued: true
+  missing_from_partner_modules:
+    description: Module codes present on the official page but absent from the partner page's module list.
+    multivalued: true
   resolution:
     description: What would resolve this issue (e.g. which sources to compare).
 

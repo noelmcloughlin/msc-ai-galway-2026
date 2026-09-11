@@ -59,7 +59,7 @@ split the same registrar/curator/librarian division of labour the wider LOKF eco
 | **Templater** | authors new notes already in the shape the rest of this table expects | `90-Meta/Templates/` |
 
 ```
-starter.json - (one-time fix + migrate)---> .lokf/knowledge/*.md <-- lokf-librarian
+inputs/ - (one-time fix + migrate)---> .lokf/knowledge/*.md <-- lokf-librarian
                                                    │      ▲
                                      validated against    reviewed by
                                      msc-ai.yaml (+lokf.yaml)   lokf-curator (skill or plugin)

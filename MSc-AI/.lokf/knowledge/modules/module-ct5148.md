@@ -2,10 +2,13 @@
 type: Module
 id: "https://msc-ai.example/knowledge/modules/module-ct5148"
 title: Programming and Tools for Artificial Intelligence - Online
-description: CT5148, a curriculum entry in programme 1MAO3. ECTS not yet confirmed.
+description: CT5148, a curriculum entry in programme 1MAO3. Semester 1, 5 ECTS.
 resource: "https://www.universityofgalway.ie/courses/taught-postgraduate-courses/online-artificial-intelligence.html"
 status: stable
-version: 1.0.0
+version: 1.1.0
+generated:
+  by: process:lokf-librarian
+  at: "2026-09-11T00:00:00Z"
 tags:
   - "assertion:source-backed"
 isPartOf:
@@ -16,18 +19,20 @@ about:
   - "https://msc-ai.example/knowledge/glossary/glossary-term-artificial-intelligence"
 module_code: CT5148
 curriculum_label: Optional
+ects: 5
+semester: 1
 component_kind: curriculum-entry
 ---
 
 # Programming and Tools for Artificial Intelligence - Online
 
-Programming and Tools for Artificial Intelligence - Online is an official curriculum entry in the supplied 2026 programme extract. Semester, year and ECTS remain unset unless explicitly supported by the reviewed source. Detailed learning outcomes, assessment weighting, prerequisites and reading lists are delegated to the offline acquisition workflow.
+Programming and Tools for Artificial Intelligence - Online is an official curriculum entry in the supplied 2026 programme extract. It runs in Semester 1 for 5 ECTS, confirmed directly against the official programme page on 2026-09-11; which programme year it falls in remains unset, since the source's 'Year 1 (90 Credits)' heading conflicts with the programme's two-year structure (see `verification-issue-year-credit-heading`). Detailed learning outcomes, assessment weighting, prerequisites and reading lists are delegated to the offline acquisition workflow.
 
 ## Record profile
 
 - **LOKF type:** `Module`
 - **Assertion basis:** `source-backed`
-- **Version:** `1.0.0`
+- **Version:** `1.1.0`
 - **Status:** `stable`
 
 ## Bundle navigation
