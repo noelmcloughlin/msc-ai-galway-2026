@@ -86,6 +86,10 @@ Run `lokf-librarian` from the repository root to refresh the bundle from the vau
 - `msc-ai.yaml` exists because the generated LOKF schema rejects unknown types and keys despite the spec's tolerance rule; `knowledge_bundle/log.md`, "Schema extension", has the story.
 - `.retired/` holds what the 2026-09-12 restructure took out - a second vault config at the repository root, a plugin enhancement plan, two empty notes. `git rm -r .retired` once you agree.
 
+## Releases
+
+`CHANGELOG.md`'s `## [Unreleased]` section is written as changes happen. On merge to `main`, [`semantic-release.yml`](.github/workflows/semantic-release.yml) computes the next version from the commits since the last tag, refuses to proceed if that section is empty, retitles it to a dated version heading, and publishes a GitHub Release from it - gated behind the `release` Environment (configure required reviewers on it once, in Settings → Environments).
+
 ## Upstream
 
 - [`lokf-agent-skills`](https://github.com/noelmcloughlin/lokf-agent-skills) · [`obsidian-lokf-registrar`](https://github.com/noelmcloughlin/obsidian-lokf-registrar) · [`obsidian-lokf-curator`](https://github.com/noelmcloughlin/obsidian-lokf-curator)
