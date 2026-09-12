@@ -20,7 +20,7 @@ This bundle holds **entities, not episodes**: the programme, its modules, its te
 the sources they are evidenced by, and the open questions about them - the stable things that
 lecture notes, labs and reading notes in the surrounding vault point *at*. Personal notes stay
 in the vault and graduate into `concepts/` only once they have settled. See
-`../../01-Dashboard/CONVENTIONS.md`.
+`../01-Dashboard/CONVENTIONS.md`.
 
 `base_iri` is a placeholder (`msc-ai.example`, an RFC 2606 reserved domain) pending a real,
 owned namespace - consistent with the other LOKF bundles in this author's projects. It mints
@@ -30,9 +30,11 @@ Scaffolded 2026-09-11 and materialised the same day from a hand-curated source e
 (`inputs/`), migrated onto this bundle's LOKF vocabulary - see `log.md` for the
 fix-list applied. This bundle carries a small domain extension, `msc-ai.yaml` (imports
 `lokf.yaml`, a pinned copy of the core schema alongside it) - `just lokf-validate` uses it
-automatically; see `msc-ai.yaml`'s header comment for why one was needed. `Concepts` is still
-empty: nothing has graduated from the vault yet. `lokf-librarian` maintains this table of
-contents from here on.
+automatically; see `msc-ai.yaml`'s header comment for why one was needed. On 2026-09-12 the bundle
+became the vault's visible `knowledge_bundle/` folder (the tools reach it as `.lokf/knowledge`) and the
+first three concepts graduated from the vault's seeded notes - one unchecked draft, one checked by
+automation, one carrying an open question - so that every trust state the plugins show is on display.
+`lokf-librarian` maintains this table of contents from here on.
 
 # Programme
 
@@ -85,6 +87,7 @@ contents from here on.
 * [Technology Ireland ICT Skillnet programme page](sources/source-snapshot-reference-ict-skillnet-page.md) - The Technology Ireland ICT Skillnet partner page for the programme, kept as corroborating evidence.
 * [University of Galway online MSc AI course extract (2026)](sources/source-snapshot-reference-uog-extract-2026.md) - The supplied 2026 programme-extract text file, the primary source for most claims in this bundle.
 * [University of Galway online MSc AI public page](sources/source-snapshot-reference-uog-public-page.md) - The University of Galway's official public page for the programme.
+* [Vaswani et al. (2017), Attention Is All You Need](sources/vaswani-2017-attention-is-all-you-need.md) - The NeurIPS 2017 paper that introduced the Transformer; the external source behind the bundle's self-attention and transformer concepts.
 
 # Issues
 
@@ -111,4 +114,6 @@ contents from here on.
 
 # Concepts
 
-*Empty.*
+* [Gradient descent](concepts/gradient-descent.md) - Iteratively move the parameters against the gradient of the objective, θ ← θ − η∇J(θ); the learning rate η sets the step, and too large a step oscillates or diverges.
+* [Self-attention](concepts/self-attention.md) - Scaled dot-product attention lets every token weight every other token; the √d_k scaling keeps the softmax from saturating; multi-head attention runs several in parallel.
+* [Transformer](concepts/transformer.md) - An encoder-decoder sequence model built from stacked self-attention and position-wise feed-forward layers with positional encodings, and no recurrence or convolution.

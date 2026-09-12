@@ -1,0 +1,27 @@
+// Same rule set as the sibling LOKF repositories. The Templater templates are
+// skipped: their `<%* ... %>` blocks are Templater syntax, which MD037 misreads
+// as emphasis. Run `npx markdownlint-cli2` from this directory.
+{
+  "config": {
+    "MD013": false,
+    "MD022": false,
+    "MD032": false,
+    "MD024": false,
+    "MD012": false,
+    "MD025": false,
+    "MD028": false,
+    "MD033": false,
+    "MD041": false
+  },
+  "globs": [
+    "**/*.md"
+  ],
+  "ignores": [
+    "MSc-AI/90-Meta/Templates/**",
+    ".retired/**",
+    ".claude/**",
+    ".agents/**",
+    "**/node_modules/**",
+    "**/.venv/**"
+  ]
+}

@@ -1,18 +1,21 @@
-# Generated agent-runtime directories - not source content.
-# (lokf-scaffolding repo-hygiene note: these are installed artefacts, not project files.)
+# Generated agent-runtime directories - installed artefacts, not source content
+# (lokf-sidecar's repo-hygiene note). Install the four skills locally and they
+# land here without touching the repository.
 .agents/
 .claude/
 skills-lock.json
 
-# Obsidian workspace state - per-machine, not shared.
+# Obsidian workspace state - per-machine, not shared. The vault is MSc-AI/.
+# knowledge_bundle/.obsidian/ appears only if the bundle is opened as a vault
+# of its own.
 MSc-AI/.obsidian/workspace.json
 MSc-AI/.obsidian/workspace-mobile.json
+MSc-AI/knowledge_bundle/.obsidian/
 
-# LOKF toolkit build noise is handled by MSc-AI/.lokf/.gitignore, which the
-# scaffolding template owns (.venv/, __pycache__/, *.pyc, lokf-tables/, and the
-# .obsidian/ state Obsidian writes through the knowledge_bundle symlink).
-# uv.lock is deliberately NOT ignored: the sidecar sets `package = false`, so
-# committing the lock is what makes `just lokf-install` reproducible.
+# LOKF toolkit build noise is handled by .lokf/.gitignore (.venv/, __pycache__/,
+# *.pyc, lokf-tables/). uv.lock is deliberately NOT ignored: the sidecar sets
+# `package = false`, so committing the lock is what makes `just lokf-install`
+# reproducible.
 
 # OS noise
 .DS_Store

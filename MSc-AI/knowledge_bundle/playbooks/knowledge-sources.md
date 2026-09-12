@@ -8,7 +8,7 @@ status: draft
 version: 1.0.0
 generated:
   by: process:lokf-librarian
-  at: "2026-09-11T00:00:00Z"
+  at: "2026-09-12T15:30:00Z"
 tags:
   - "assertion:user-defined"
 references:
@@ -29,7 +29,15 @@ This bundle's initial 50 concepts came from a hand-curated migration (`inputs/`,
 
 ## Repository sweep
 
-The host vault (`MSc-AI/`) was swept for orphan content on 2026-09-11: `10-Programme/Modules/<CODE> - <Title>/`, `20-Learning/`, `30-Knowledge/Concepts/`, `40-Research/`, `50-Projects/`, `60-Assets/`, `99-Archive/` all contain only `.gitkeep` placeholders, and `00-Inbox/` holds two empty untitled notes. None yielded a concept. Re-walk this list on each refresh; a populated `30-Knowledge/Concepts/` note that has stopped changing and is linked from two or more other notes is the main thing expected to eventually graduate (see `01-Dashboard/CONVENTIONS.md`).
+The host vault (`MSc-AI/`) was re-swept on 2026-09-12. It carries a small set of seeded notes, each tagged `example`, that show the path from workshop to exhibition:
+
+- `30-Knowledge/Concepts/Self-Attention.md` - a concept note with bundle-shaped frontmatter; graduated as `concepts/self-attention` (a draft until a person confirms it). Re-check: compare the note's claims with the record and with Vaswani et al. 2017 §3.2.
+- `20-Learning/Lab - Gradient descent by hand.md` - a worked tutorial; its settled facts are `concepts/gradient-descent`. Re-check against chapter 4 of the Deep Learning book (the record's `resource`).
+- `40-Research/Literature-Notes/Vaswani et al. 2017 - Attention Is All You Need.md` - a paper note; graduated as `sources/vaswani-2017-attention-is-all-you-need`. Re-check: the arXiv abstract page.
+- The CT5145 lecture note and the paper note disagree about which module introduces the Transformer; `concepts/transformer` carries that as an open question rather than a guess.
+- `30-Knowledge/Concepts/Gradient Descent.md`, `00-Inbox/Attention scribbles.md`, the CT5145 lecture note and `01-Dashboard/MOCs/Deep Learning.md` - workshop notes that do not meet the graduation rule (no `resource`, still changing, or episodic by nature); left in the vault on purpose.
+
+`50-Projects/`, `60-Assets/`, `99-Archive/` and the other module folders hold only placeholders. Re-walk this list on each refresh; a `30-Knowledge/Concepts/` note that has stopped changing and is linked from two or more other notes is what graduates next (see `01-Dashboard/CONVENTIONS.md`).
 
 ## Record profile
 

@@ -18,7 +18,7 @@ modules plus the 30-ECTS capstone **CT5131**.
 ## Start here
 
 - [[CONVENTIONS]] - where things go and why
-- `../../DESIGN.md` - the full build plan and reasoning
+- [[Deep Learning]] - the first map of content, over the seeded notes and the bundle records they became
 - `MOCs/` - maps of content, the way to navigate by subject
 
 ## Modules
@@ -43,11 +43,12 @@ modules plus the 30-ECTS capstone **CT5131**.
 
 ## The knowledge bundle
 
-`knowledge_bundle/` holds the programme, modules, staff, sources and open issues as a LOKF
-knowledge graph. It is a symlink into the hidden `.lokf/` sidecar - see [[CONVENTIONS]] for
-what belongs there and how a note graduates into it.
-
-Not yet created - run `lokf-scaffolding` (step 4 of DESIGN.md) and the symlink will resolve.
+`knowledge_bundle/` holds the programme, modules, staff, sources, open issues and graduated
+concepts as a LOKF knowledge graph - the **exhibition** beside this vault's workshop. It is an
+ordinary folder here; the tools reach the same files as `.lokf/knowledge` at the repository root.
+See [[CONVENTIONS]] for what belongs in it and how a note graduates. The status bar shows what the
+two plugins make of it: LOKF Registrar's well-formed check, and LOKF Curator's *confirmed by a
+person: n of N* - the number this whole setup exists to raise, slowly. Start with [[self-attention]].
 
 ## Inbox
 

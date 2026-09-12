@@ -2,7 +2,7 @@
 
 The short version: **folders carry lifecycle, frontmatter carries meaning, links carry relationships.** If you are deciding where to put something, ask what *stage* it is at - not what it is *about*. What it is about goes in the frontmatter, where a note can belong to many things at once.
 
-Full reasoning: `../../DESIGN.md`.
+Full reasoning: the repository `README.md`.
 
 ## Where things go
 
@@ -56,7 +56,7 @@ tags: [transformers, nlp, deep-learning]
 
 ## The bundle (`knowledge_bundle/`)
 
-`knowledge_bundle/` is a symlink to `.lokf/knowledge/` - the LOKF knowledge bundle. Obsidian never indexes folders starting with a dot, so **the symlink is the only way Obsidian and the LOKF Enforcer plugin can see the bundle at all.** Don't delete or rename it.
+`knowledge_bundle/` is the LOKF knowledge bundle - a real folder of this vault, so Obsidian indexes it like any other, and the tools reach the same folder as `.lokf/knowledge`, a link at the repository root. Don't rename it: both plugins detect it by that name, and the skills and CI address it through the link. The vault is the **workshop**; this folder is the **exhibition**.
 
 It holds **entities, not episodes**: the programme, the 15 modules, the teaching staff, the sources, the open verification issues, and concept notes that have settled. These are the stable things everything else points at. Your daily notes link *into* it.
 
@@ -76,7 +76,7 @@ Bundle frontmatter is stricter than vault frontmatter:
 - Actor strings are `human:<id>` or `process:<id>` - `human:noelmcloughlin`, never an email.
 - `timestamp` and `citations` are deprecated; use `generated.at` and `sources`.
 
-Validate from `MSc-AI/.lokf/` with `just lokf-validate` and `just lokf-check-refs`.
+Validate from `.lokf/` at the repository root with `just lokf-validate` and `just lokf-check-refs`.
 
 ## Daily habit
 

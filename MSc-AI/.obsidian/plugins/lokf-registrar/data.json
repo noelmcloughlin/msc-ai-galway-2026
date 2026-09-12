@@ -70,9 +70,7 @@
   "checkRelationTargets": true,
   "excludeFolders": [],
   "batchSize": 50,
-  "recommendSiblingPlugin": true,
   "bundleRoots": [
     "knowledge_bundle"
-  ],
-  "siblingNoticeShown": true
+  ]
 }

@@ -1,4 +1,4 @@
-/* LOKF Enforcer - compact report styles */
+/* LOKF Registrar - compact report styles */
 
 .lokf-report {
   padding: 6px 8px 16px 8px;
@@ -291,5 +291,11 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+}
+.lokf-confirm-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
 }
 

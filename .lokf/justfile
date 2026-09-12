@@ -1,7 +1,9 @@
 # LOKF knowledge-bundle recipes for MSc Artificial Intelligence.
 #
 # The `lokf` toolkit is a Python sidecar (see pyproject.toml); these recipes
-# drive it against the knowledge/ bundle. Run `just --list` to see them.
+# drive it against the knowledge/ bundle. Here knowledge/ is a link onto the
+# vault's visible MSc-AI/knowledge_bundle/ folder (lokf-sidecar's visible
+# layout for a vault host). Run `just --list` to see them.
 
 bundle := "knowledge"
 schema := "msc-ai.yaml"
@@ -14,15 +16,11 @@ default:
 lokf-install:
     uv sync
 
-# Assemble and validate the knowledge bundle against msc-ai.yaml (this
-# bundle's domain extension - imports lokf.yaml and adds the classes/slots
-# the generated core schema's additionalProperties:false would otherwise
-# reject; see knowledge/log.md "Schema extension" for why one was needed).
-# `lokf convert`/`serve`/`query` have no --schema flag, so they still resolve
-# the plain core schema via the local lokf.yaml copy alongside this file -
-# fine for lokf-check-refs below (it only touches the 10 fixed relation
-# predicates, unaffected by the extension), less complete for RDF/SPARQL use
-# of the custom classes until upstream adds one.
+# Assemble and validate the knowledge bundle against msc-ai.yaml, this bundle's
+# domain extension (it imports lokf.yaml and adds the classes and slots the
+# generated core schema's additionalProperties:false would otherwise reject -
+# see knowledge/log.md, "Schema extension"). convert/serve/query have no
+# --schema flag and resolve the plain core schema via the local lokf.yaml copy.
 lokf-validate:
     uv run lokf validate --schema {{ schema }} {{ bundle }}
 
@@ -50,3 +48,17 @@ lokf-check-refs:
       echo "$dangling"
       exit 1
     fi
+
+# Visible layout: the real bundle folder lives inside the vault, and
+# .lokf/knowledge is a link onto it. Git carries the link; a sync service such
+# as OneDrive does not, so a machine may need it recreated. `visible` is the
+# folder's path relative to this directory.
+visible := "../MSc-AI/knowledge_bundle"
+
+# Recreate the .lokf/knowledge link onto the visible bundle folder (no-op when knowledge/ exists)
+lokf-link:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [ -L knowledge ] && [ ! -e knowledge ]; then echo "knowledge is a link to nothing ($(readlink knowledge)) - remove it and re-run" >&2; exit 1; fi
+    if [ -e knowledge ]; then echo "knowledge already present - nothing to link"; exit 0; fi
+    if [ -d "{{ visible }}" ]; then ln -s "{{ visible }}" knowledge && echo "linked .lokf/knowledge -> {{ visible }}"; else echo "no {{ visible }} folder to link to" >&2; exit 1; fi

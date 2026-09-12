@@ -16,7 +16,7 @@ You write normal Markdown; you get a validated, queryable graph for free.
 
 ```text
 .lokf/
-|-- knowledge/            # the bundle - one Markdown file per concept
+|-- knowledge -> ../MSc-AI/knowledge_bundle   # the bundle, one Markdown file per concept - a link onto the vault's visible folder
 |   |-- index.md          # bundle metadata + table of contents (reserved)
 |   |-- log.md            # change history (reserved)
 |   |-- programme/  modules/  people/  sources/  issues/  glossary/  playbooks/  concepts/
@@ -24,6 +24,7 @@ You write normal Markdown; you get a validated, queryable graph for free.
 |-- msc-ai.yaml           # this bundle's domain extension - see its header comment for why
 |-- pyproject.toml        # declares the `lokf` toolkit as a dependency
 |-- justfile              # convenience commands (below)
+|-- scripts/knowledge-librarian.sh   # the scheduled librarian's wrapper, run by .github/workflows/knowledge-librarian.yaml
 |-- feedback.md           # appears once a reader's agent records a gap; input for the librarian, not knowledge
 ```
 
@@ -33,8 +34,9 @@ per concept class with no discriminator on `type` - a project-specific type (`Mo
 the LOKF spec's prose saying consumers "MUST tolerate" both. `just lokf-validate` already
 points at it; see `knowledge/log.md`'s "Schema extension" entry for the full story.
 
-If a `knowledge_bundle` symlink sits at the repo root, that's this same `knowledge/` directory under an ordinary, visible name - open *it* as an
-Obsidian vault ("Open folder as vault") rather than hunting for the hidden `.lokf/` directory in the file picker.
+`knowledge/` here is a link: the real folder is `../MSc-AI/knowledge_bundle/`, an ordinary folder of the Obsidian vault (lokf-sidecar's
+*visible layout* for a vault host). Open the vault, not this directory. Git carries the link; if a sync service drops it, `just lokf-link`
+recreates it.
 
 ## Prerequisites
 
@@ -49,6 +51,7 @@ just lokf-install    # one-time: install the toolkit (uv sync)
 just lokf-validate   # check every concept against the LOKF schema
 just lokf-serve      # local SPARQL endpoint + interactive graph explorer
 just lokf-convert    # print the whole bundle as RDF (Turtle)
+just lokf-check-refs # every typed relation points at a record that exists
 ```
 
 Without `just`:

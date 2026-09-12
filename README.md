@@ -1,92 +1,94 @@
 # msc-ai-galway-2026
 
-An Obsidian vault for a two-year, part-time MSc in Computer Science (Artificial Intelligence) at University of Galway - built as a working example of the [LOKF](https://lokf.nolan-nichols.com) ecosystem: agent skills that scaffold and maintain a knowledge bundle, a domain schema extension, and two companion Obsidianplugins, all pointed at the same files.
+One Obsidian vault, many folders, and a knowledge bundle beside it. A working showcase of the [LOKF](https://lokf.nolan-nichols.com) sidecar pattern, built around a two-year, part-time MSc in Computer Science (Artificial Intelligence) at University of Galway.
 
-This file is the front door - open here first.
+**The vault is the workshop. The bundle is the exhibition.** Everyday notes stay in the vault and change freely; what has settled graduates into the bundle, where every record says what it is, where it came from and who last checked it - and two Obsidian plugins keep that visible while you work.
 
 ## Layout
 
-```
-msc-ai-galway-2026/         - git root; run skills and just recipes from here
-├── .agents/skills/         - the 4 lokf-agent-skills (scaffolding, librarian, curator, docent)
-├── inputs/                 - research material and the original programme-data export
-├── DESIGN.md               - why everything below looks the way it does
-└── MSc-AI/                 - THE OBSIDIAN VAULT - open THIS folder in Obsidian
-    ├── .obsidian/plugins/  - lokf-enforcer, lokf-curator, templater-obsidian
-    ├── .lokf/              - the LOKF knowledge bundle (hidden from Obsidian's index)
-    │   ├── lokf.yaml       - pinned copy of the core LOKF schema (0.7.0)
-    │   ├── msc-ai.yaml     - this bundle's domain extension (see below)
-    │   └── knowledge/      - 50 concepts: programme, modules, people, sources, issues...
-    ├── knowledge_bundle -> .lokf/knowledge   - visible symlink; how Obsidian sees the bundle
-    ├── 00-Inbox/ … 99-Archive/              - lifecycle folders for everyday notes
-    └── 01-Dashboard/CONVENTIONS.md          - the vault's own house style
+```text
+msc-ai-galway-2026/                 the host: one git repository
+├── MSc-AI/                          THE VAULT - open this folder in Obsidian
+│   ├── 00-Inbox/ … 99-Archive/      lifecycle folders for everyday notes (the workshop)
+│   ├── 01-Dashboard/                Home, CONVENTIONS, MOCs/
+│   ├── knowledge_bundle/            THE BUNDLE - a real folder of the vault (the exhibition)
+│   └── .obsidian/                   vault config; LOKF Registrar, LOKF Curator, Templater installed
+├── .lokf/                           the sidecar: toolkit, schema extension, justfile, CI wrapper
+│   └── knowledge -> ../MSc-AI/knowledge_bundle    the tools' name for the same folder
+├── .github/workflows/               registrar (validate + provenance gate), librarian (scheduled refresh)
+├── llms.txt                         tells an agent to read the bundle first
+└── inputs/                          the original programme-data export (historical)
 ```
 
-Two documents, two audiences: **DESIGN.md** is the design record (read it to understand *why*); **`MSc-AI/01-Dashboard/CONVENTIONS.md`** is the vault's own quick reference (read it while actually taking notes). This README is neither - it's how to get the whole thing running.
+Two names, one folder. People and Obsidian use `MSc-AI/knowledge_bundle/`; the skills, the `lokf` toolkit and CI use `.lokf/knowledge`. That is the `lokf-sidecar` skill's *visible layout*, the right one when the host is a vault: Obsidian indexes the bundle like any other folder, and no second vault is needed.
 
-## Quick start
+## Open it
 
-1. **Open `MSc-AI/` as the vault** in Obsidian - not `msc-ai-galway-2026/`. Obsidian never indexes dot-folders, so the `knowledge_bundle` symlink makes the bundle visible and linkable.
+1. **Obsidian → Open folder as vault → `MSc-AI/`.** Not the repository root. (`knowledge_bundle` on its own works too, as a focused desk, but nothing requires it.)
+2. **Trust community plugins** when asked. All three are already enabled. LOKF Curator finds `knowledge_bundle/` on its own; LOKF Registrar's saved settings name it under *Bundle root folders* and already list this bundle's custom types.
+3. Read the status bar: **LOKF ✓** means every record is well-formed; **Confirmed 0/55** means nobody has confirmed anything yet. That second number is yours to raise.
 
-2. **Trust and enable community plugins** the first time Obsidian asks (a one-time safety prompt - the three plugins are already registered in `.obsidian/community-plugins.json`, they just need the toggle).
+## Your first ten minutes
 
-3. **Write in `00-Inbox/`** using the templates in `90-Meta/Templates/` (Concept, Lecture, Paper, Lab note) - each already emits LOKF-shaped frontmatter, so a note is bundle-ready the moment it's worth graduating. See CONVENTIONS.md's graduation rule for when that is.
+1. Open `01-Dashboard/MOCs/Deep Learning` - the map over the seeded notes and the records they became.
+2. Open `knowledge_bundle/concepts/self-attention`. Its frontmatter carries the **Draft** badge, and the curator panel (the ribbon gem, or *Open curator panel*) lists it under *Worth ten minutes today*.
+3. Press **Review this note**. The card puts the source (arXiv 1706.03762) beside the claim and asks whether the source still says this. Read §3.2 of the paper, then **Confirm**. The plugin asks for your curator id once (`noelmcloughlin`), appends a `human:` event under `verified`, clears `draft`, and writes a Curation line into `log.md`. **Confirmed 1/55.**
+4. Open `knowledge_bundle/concepts/transformer`: a draft with an `## Open questions` section the librarian left - which module introduces it first? If you know, **Wrong - I corrected it** and fix the `about` list; if not, **Later**.
+5. Commit with a signed commit. The registrar workflow accepts a `human:` confirmation only when its author approved the pull request or signed the commit; [knowledge-registrar.yaml](.github/workflows/knowledge-registrar.yaml) carries the three `git config` lines.
 
-4. **Validate the bundle** whenever you touch `.lokf/knowledge/` by hand:
-   ```bash
-   cd MSc-AI/.lokf
-   just lokf-install     # once: uv sync
-   just lokf-validate    # schema-check all 50 concepts
-   just lokf-check-refs  # no relation points at a concept that doesn't exist
-   just lokf-serve       # local SPARQL endpoint + graph explorer
-   ```
-5. **Run the agent skills** from `msc-ai-galway-2026/` (not `MSc-AI/`) so `.agents/skills/` resolves, naming `MSc-AI/` as the host when a skill asks. `lokf-librarian` maintains the bundle day to day; `lokf-curator` is the human-confirmation pass (there's a live queue: four open verification issues in `.lokf/knowledge/issues/`).
+That is the whole loop: the librarian (an agent) derives and refreshes, you confirm, the registrar keeps it honest.
 
-## How the pieces interoperate
+## What the seeded notes show
 
-Everything downstream reads the same 50 Markdown files under `.lokf/knowledge/` - nothing here has its own private copy of the truth. The two plugins and four skills
-split the same registrar/curator/librarian division of labour the wider LOKF ecosystem uses:
+Every seeded note is tagged `example`; delete them when the real ones arrive.
 
-| Tool | Role | Touches |
-| --- | --- | --- |
-| `lokf-scaffolding` (skill) | lays the network - built `.lokf/` once | run only to repair |
-| `lokf-librarian` (skill) | binds it into order - derives and maintains concepts | `.lokf/knowledge/` |
-| `lokf-curator` (skill) | holds the scales - records a human's confirm/correct/retire verdict | `verified`, `status`, `## Open questions` |
-| `lokf-docent` (skill) | guides the visitors - answers questions from the bundle | reads only |
-| **LOKF Enforcer** (plugin) | the registrar's desk - flags malformed frontmatter live, in the editor | `knowledge_bundle/` only (scoped via `bundleRoots`) |
-| **LOKF Curator** (plugin) | the same review session as the skill, without an agent in the loop | same fields as the skill |
-| **`msc-ai.yaml`** (schema) | the shared vocabulary all of the above check against | imports `lokf.yaml`, adds this domain's classes |
-| **Templater** | authors new notes already in the shape the rest of this table expects | `90-Meta/Templates/` |
+| State in the workshop | Note |
+| --- | --- |
+| No frontmatter - a raw capture | `00-Inbox/Attention scribbles` |
+| Obsidian-native only (`aliases`, `tags`); not bundle-ready | `30-Knowledge/Concepts/Gradient Descent` |
+| Episodic - stays in the vault for good | `10-Programme/Modules/CT5145 - Deep Learning/Week 1 - What deep learning is` |
+| Bundle-shaped (`type`, `genre`, `description`, `resource`, `about`) | `30-Knowledge/Concepts/Self-Attention`, the lab in `20-Learning/`, the paper note in `40-Research/` |
 
+| Stage in the exhibition | Record |
+| --- | --- |
+| Draft, nobody has checked it | `concepts/self-attention` |
+| Stable, checked by automation only | `concepts/gradient-descent`, `sources/vaswani-2017-attention-is-all-you-need` |
+| Draft with an open question for the curator | `concepts/transformer`, and the four records under `issues/` |
+| Confirmed by a person | none yet - step 3 above writes the first |
+| Retired | none yet - the **Retire** verb writes it |
+
+The rule for graduating a note, and the frontmatter each kind of note gets, is `MSc-AI/01-Dashboard/CONVENTIONS.md`.
+
+## Tooling
+
+```bash
+cd .lokf
+just lokf-install      # once: uv sync
+just lokf-validate     # every record against msc-ai.yaml (LOKF core + this bundle's classes)
+just lokf-check-refs   # every typed relation points at a record that exists
+just lokf-serve        # SPARQL endpoint + graph explorer
+just lokf-link         # recreate .lokf/knowledge if a sync service dropped the link
 ```
-inputs/ - (one-time fix + migrate)---> .lokf/knowledge/*.md <-- lokf-librarian
-                                                   │      ▲
-                                     validated against    reviewed by
-                                     msc-ai.yaml (+lokf.yaml)   lokf-curator (skill or plugin)
-                                                   │
-                                     seen by LOKF Enforcer live, and by
-                                     Obsidian only via knowledge_bundle/
+
+The agent skills install at the repository root (gitignored):
+
+```bash
+npx skills add noelmcloughlin/lokf-agent-skills \
+  --skill lokf-sidecar --skill lokf-librarian --skill lokf-curator --skill lokf-docent --yes
 ```
 
-## The knowledge bundle, in one paragraph
+Run `lokf-librarian` from the repository root to refresh the bundle from the vault; `lokf-curator` is the same review session as the plugin, in a terminal; `lokf-docent` answers questions from the bundle first. CI runs `lokf validate` and the provenance gate on every pull request that touches the bundle; the scheduled librarian workflow stays inert until the `KNOWLEDGE_LIBRARIAN_ENABLED` repository variable is set.
 
-`.lokf/knowledge/` holds **entities, not episodes**: the programme, its 15 modules, 10 teaching staff (plus 10 `Role` concepts reifying who holds what), 3 sources, 4
-open verification issues, and a growing glossary - the stable things everyday notes in the vault point *at*. It needed its own small schema, `msc-ai.yaml`, because LOKF's generated validator is stricter about unknown fields than its own spec's prose promises (see `log.md`'s "Schema extension" entry, and `DESIGN.md`'s appendix,
-for the full story - worth reading if you're extending either upstream project). `base_iri` is currently the RFC 2606 placeholder `msc-ai.example`, consistent with
-this author's other LOKF bundles, pending a real namespace.
+## Status and caveats
 
-## Status and known caveats
-
-- `lokf-curator`'s review pass hasn't run yet - four open issues are waiting (module-count contradiction, an assessment-wording anomaly, a year/credit heading
-  conflict, and a core/optional classification conflict). Safe to leave; nothing downstream depends on them being resolved.
-- `lokf-enforcer` and `lokf-curator` (the plugins) were installed from the best pre-built copies available on this machine - no `node`/`npm` toolchain here yet.
-  `lokf-enforcer`'s build trails its manifest's latest version bump by a few hours; functionally low-risk (new checks are warnings, never hard errors), but worth a
-  rebuild-and-refresh once npm is available.
-- Dataview isn't installed. Bases (Obsidian core) is tried first, per the plan; reach for Dataview only if Bases falls short.
+- Four `VerificationIssue` records are open: the public sources contradict each other on module count, core/optional status, the year/credit heading and one assessment sentence. Nothing downstream depends on them.
+- `base_iri` is the placeholder `msc-ai.example` (RFC 2606). It mints every `id`; migrate it before anyone links in.
+- `msc-ai.yaml` exists because the generated LOKF schema rejects unknown types and keys despite the spec's tolerance rule; `knowledge_bundle/log.md`, "Schema extension", has the story.
+- `.retired/` holds what the 2026-09-12 restructure took out - a second vault config at the repository root, a plugin enhancement plan, two empty notes. `git rm -r .retired` once you agree.
 
 ## Upstream
 
-- [`lokf-agent-skills`](https://github.com/noelmcloughlin/lokf-agent-skills) - the four skills
-- [`obsidian-lokf-enforcer`](https://github.com/noelmcloughlin/obsidian-lokf-enforcer) - the registrar's-desk plugin
-- [`obsidian-lokf-curator`](https://github.com/noelmcloughlin/obsidian-lokf-curator) - the review-session plugin
-- [LOKF specification](https://lokf.nolan-nichols.com) · [`lokf` toolkit (PyPI)](https://pypi.org/project/lokf/)
+- [`lokf-agent-skills`](https://github.com/noelmcloughlin/lokf-agent-skills) · [`obsidian-lokf-registrar`](https://github.com/noelmcloughlin/obsidian-lokf-registrar) · [`obsidian-lokf-curator`](https://github.com/noelmcloughlin/obsidian-lokf-curator)
+- [LOKF specification](https://lokf.nolan-nichols.com) · [`lokf` toolkit](https://pypi.org/project/lokf/)
+
+Apache-2.0 - see [LICENSE](LICENSE) and [NOTICE](NOTICE). AI-assisted work here follows [AI_COVENANT.md](AI_COVENANT.md).

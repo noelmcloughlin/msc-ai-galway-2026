@@ -1,0 +1,12 @@
+# Python sidecar artifacts (do not commit)
+.venv/
+__pycache__/
+*.pyc
+lokf-tables/
+
+# Obsidian workspace state, written into the bundle when it is opened as a
+# vault of its own. In this repository the bundle is the vault's visible
+# MSc-AI/knowledge_bundle/ folder (knowledge/ here is a link onto it), so the
+# live rule is MSc-AI/knowledge_bundle/.obsidian/ in the root .gitignore; this
+# one covers a hidden-layout checkout.
+.obsidian/
