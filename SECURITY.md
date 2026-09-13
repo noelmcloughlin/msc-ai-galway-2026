@@ -2,7 +2,7 @@
 
 ## This repository
 
-`msc-ai-galway-2026` is a showcase Obsidian vault: example notes, a validated LOKF knowledge bundle, and the tooling that keeps both in shape. It ships no plugin, no server, and no runtime code of its own - opening the vault in Obsidian runs nothing beyond whatever community plugins you already have installed there (see the README's "Open it" and "Upstream" sections for which ones).
+`msc-ai-galway-2026` is a personal Obsidian vault: example notes, a validated LOKF knowledge bundle, and the tooling that keeps both in shape. It ships no plugin, no server, and no runtime code of its own - opening the vault in Obsidian runs nothing beyond whatever community plugins you already have installed there (see the README's "Open it" and "Upstream" sections for which ones).
 
 Because of that, the realistic risk surface here isn't the vault content itself - it's this **GitHub repository's own automation**: the scheduled agent that helps maintain the knowledge bundle, and the release pipeline that publishes this repository's changelog as a GitHub Release. Everything below concerns that.
 

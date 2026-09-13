@@ -20,7 +20,7 @@ This bundle holds **entities, not episodes**: the programme, its modules, its te
 the sources they are evidenced by, and the open questions about them - the stable things that
 lecture notes, labs and reading notes in the surrounding vault point *at*. Personal notes stay
 in the vault and graduate into `concepts/` only once they have settled. See
-`../01-Dashboard/CONVENTIONS.md`.
+`MSc-AI/01-Dashboard/CONVENTIONS.md` at the repository root, and `playbooks/obsidian-workshop.md` here.
 
 `base_iri` is a placeholder (`msc-ai.example`, an RFC 2606 reserved domain) pending a real,
 owned namespace - consistent with the other LOKF bundles in this author's projects. It mints
@@ -105,6 +105,7 @@ opened in Obsidian as a vault of its own through the `knowledge_bundle` link at 
 
 * [Offline LOKF knowledge acquisition](playbooks/ingestion-playbook-offline-ingestion.md) - How this bundle is refreshed from source material without overwriting personal learning.
 * [Knowledge sources map](playbooks/knowledge-sources.md) - Where this bundle's concepts come from, and how to re-check each source.
+* [Working the workshop in Obsidian](playbooks/obsidian-workshop.md) - How the MSc-AI vault is run day to day - capture, a daily note per study day, templated notes, live Bases views, a weekly inbox sweep - and the rule by which a concept note leaves it for the exhibition.
 
 # Programme Patterns
 

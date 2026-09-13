@@ -31,7 +31,7 @@ Derived on 2026-09-12 from the vault note `30-Knowledge/Concepts/Self-Attention.
 - **LOKF type:** `Explanation`
 - **Assertion basis:** `source-backed`
 - **Version:** `1.0.0`
-- **Status:** `draft` - nobody has checked this yet; it is the showcase's first concept to confirm
+- **Status:** `draft` - nobody has checked this yet; it is the first concept to confirm
 
 ## Bundle navigation
 

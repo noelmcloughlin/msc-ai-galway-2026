@@ -6,8 +6,13 @@ No version below has been published as a GitHub release yet, so entries describe
 
 ## [Unreleased]
 
+### Added
+
+- **Daily notes, a base, and Templater's folder.** The Daily notes core plugin is on, writing to `02-Daily/<year>/` from a new `Daily note` template (core `{{date}}` syntax, so no Templater needed); `01-Dashboard/Vault.base` gives five live views over the vault's properties (Inbox, Lectures by module, Papers, Concepts, Daily), and `Home` embeds the Inbox one; Templater now knows `90-Meta/Templates` is its folder.
+
 ### Changed
 
+- **README rewritten Obsidian-first.** Part 1 is the workshop: a first hour in seven steps (Web Clipper into the inbox, PDFs by page, the daily note, one lecture note, the base, the weekly inbox sweep), a table of what Obsidian gives you natively with a help link each, the installed plugins and the one browser extension that matters, and five habits. Part 2 is the exhibition, compacted: the graduation rule, the second vault, the four-role loop as a table, one confirmation to try, tooling, and where to read next. `Home` and `CONVENTIONS` follow (today, inbox, the two new properties the base reads). This repository is described as what it is, a personal vault, not a showcase, in `README.md`, `SECURITY.md`, the release workflow's comment and one bundle record.
 - **Two vaults, not one.** The bundle moved out of the vault: `MSc-AI/knowledge_bundle/` is now `.lokf/knowledge/`, the sidecar's one real folder, and `knowledge_bundle` at the repository root is the doorway link `lokf-sidecar` lays down - opened *itself* in Obsidian as the exhibition vault, with its own `.obsidian/` committed (both LOKF plugins installed and pointed at this bundle's custom types) - while `MSc-AI/` stays the workshop and no longer lists the bundle at all. A day of the previous layout showed why: Obsidian indexed the bundle folder with the notes, so link suggestions, the quick switcher, graph and search mixed records with everyday notes. The skills retired that "visible layout" the same day; this repository follows. Every concept `id` is unchanged.
 - CI, the wrapper and the justfile address the bundle as `.lokf/knowledge` and `knowledge_bundle`, exactly as the sidecar templates do, and `just lokf-link` now recreates the doorway rather than the tools' link. `llms.txt`, `SECURITY.md`, `CONVENTIONS.md`, `Home.md`, the concept template and the three seeded notes that pointed into the bundle now name its records by path, since a wikilink cannot cross vaults. Both vaults carry the current plugin builds (LOKF Registrar `release/0.5.0`, LOKF Curator `release/0.3.0`).
 

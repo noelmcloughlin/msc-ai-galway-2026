@@ -1,5 +1,17 @@
 # Change Log
 
+## 2026-09-13 (2)
+
+* **Steady-state refresh** (librarian pass; no `feedback.md` to consume). The repository README was
+  rewritten Obsidian-first and the vault gained daily notes (`02-Daily/`), `01-Dashboard/Vault.base`
+  and a `Daily note` template. Added `playbooks/obsidian-workshop.md` (Playbook, how-to, draft): the
+  workshop's daily loop, weekly sweep and what the folders mean, derived from the README's Part 1 and
+  `MSc-AI/01-Dashboard/CONVENTIONS.md` - a daily note or a base is not knowledge, the procedure is.
+  `playbooks/knowledge-sources.md` (`generated` refreshed) records the new fixtures and where to
+  re-check. `index.md` lists the playbook and no longer points at `../01-Dashboard/CONVENTIONS.md`, a
+  path from before the bundle moved out of the vault. `concepts/self-attention.md` drops the word
+  "showcase" from its status line, as the repository has; nothing else about it changed.
+
 ## 2026-09-13
 
 * **Layout**: the bundle moved out of the vault. `MSc-AI/knowledge_bundle/` is now `.lokf/knowledge/`

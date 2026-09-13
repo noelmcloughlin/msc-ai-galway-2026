@@ -1,0 +1,55 @@
+# Live views over the workshop's properties. Open this file, or embed one view
+# in a note: ![[Vault.base#Inbox]]. Syntax: https://obsidian.md/help/bases/syntax
+filters:
+  not:
+    - file.inFolder("90-Meta")
+views:
+  - type: table
+    name: Inbox
+    filters:
+      and:
+        - file.inFolder("00-Inbox")
+    order:
+      - file.name
+      - note.type
+      - file.mtime
+  - type: table
+    name: Lectures
+    filters:
+      and:
+        - file.hasTag("lecture")
+    groupBy:
+      property: note.module
+      direction: ASC
+    order:
+      - file.name
+      - note.module
+      - note.created
+  - type: table
+    name: Papers
+    filters:
+      and:
+        - note.type == "Reference"
+    order:
+      - file.name
+      - note.year
+      - note.venue
+      - note.resource
+  - type: table
+    name: Concepts
+    filters:
+      and:
+        - file.inFolder("30-Knowledge")
+    order:
+      - file.name
+      - note.type
+      - note.description
+      - file.mtime
+  - type: table
+    name: Daily
+    filters:
+      and:
+        - file.inFolder("02-Daily")
+    order:
+      - file.name
+      - file.mtime

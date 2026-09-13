@@ -8,7 +8,7 @@ status: draft
 version: 1.0.0
 generated:
   by: process:lokf-librarian
-  at: "2026-09-12T15:30:00Z"
+  at: "2026-09-13T16:00:00Z"
 tags:
   - "assertion:user-defined"
 references:
@@ -36,6 +36,8 @@ The host vault (`MSc-AI/`) was re-swept on 2026-09-12. It carries a small set of
 - `40-Research/Literature-Notes/Vaswani et al. 2017 - Attention Is All You Need.md` - a paper note; graduated as `sources/vaswani-2017-attention-is-all-you-need`. Re-check: the arXiv abstract page.
 - The CT5145 lecture note and the paper note disagree about which module introduces the Transformer; `concepts/transformer` carries that as an open question rather than a guess.
 - `30-Knowledge/Concepts/Gradient Descent.md`, `00-Inbox/Attention scribbles.md`, the CT5145 lecture note and `01-Dashboard/MOCs/Deep Learning.md` - workshop notes that do not meet the graduation rule (no `resource`, still changing, or episodic by nature); left in the vault on purpose.
+
+Re-swept on 2026-09-13 after the repository README was rewritten Obsidian-first: the vault gained `02-Daily/` (one note per study day, by year, from a new `Daily note` template), `01-Dashboard/Vault.base` (five live views over the vault's properties) and Templater's folder setting, and `Home` embeds the base's Inbox view. None of these holds knowledge to derive - a daily note is a log, a base is a view - but the procedure they implement does, and it is `playbooks/obsidian-workshop.md`, derived from the README's Part 1 and `01-Dashboard/CONVENTIONS.md`. Re-check that playbook against those two files whenever either changes.
 
 `50-Projects/`, `60-Assets/`, `99-Archive/` and the other module folders hold only placeholders. Re-walk this list on each refresh; a `30-Knowledge/Concepts/` note that has stopped changing and is linked from two or more other notes is what graduates next (see `01-Dashboard/CONVENTIONS.md`).
 

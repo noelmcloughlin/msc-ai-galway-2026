@@ -1,6 +1,6 @@
 name: Semantic release
 
-# Computes the next version for this showcase repository from Conventional
+# Computes the next version for this repository from Conventional
 # Commits on `main`, promotes CHANGELOG.md's "## [Unreleased]" section into
 # a dated heading via .github/scripts/changelog-release.mjs, and publishes a
 # GitHub Release built from that same text. There is no package to build or

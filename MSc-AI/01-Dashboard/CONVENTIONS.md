@@ -8,15 +8,16 @@ Full reasoning: the repository `README.md`.
 
 | Folder | Holds | Leaves when |
 | --- | --- | --- |
-| `00-Inbox` | Anything uncaptured. Default location for new notes. | You file it. Aim for empty weekly. |
-| `01-Dashboard` | `Home`, this file, and `MOCs/` - the maps you navigate by | never |
+| `00-Inbox` | Anything uncaptured. Default location for new notes and web clips. | You file it. Aim for empty weekly. |
+| `01-Dashboard` | `Home`, this file, `Vault.base` (live views over the vault's properties) and `MOCs/` - the maps you navigate by | never |
+| `02-Daily/<year>` | One note per study day, from the `Daily note` template: what you studied, questions, tasks | never - a log is a log |
 | `10-Programme/Modules/<CODE> - <Title>` | Per-module material: lecture notes, labs, assignments | module ends -> `99-Archive` |
 | `20-Learning` | Cross-module lectures, labs, tutorials | distilled into `30-Knowledge` |
 | `30-Knowledge/Concepts` | **The synthesised notes. The valuable ones.** | graduates to the bundle |
 | `40-Research` | `Reading-Queue/`, `Literature-Notes/`, `Dissertation/` | - |
 | `50-Projects` | Coursework and personal builds | finished -> `99-Archive` |
 | `60-Assets` | PDFs, images, data, slides. Default attachment location. | - |
-| `90-Meta/Templates` | Templater templates | - |
+| `90-Meta/Templates` | Templates: Lecture, Lab, Paper and Concept notes (Templater), and the Daily note (core Templates syntax, so the Daily notes plugin fills it in) | - |
 | `99-Archive` | Done, but kept for links and history | never |
 | *(not here)* | **The LOKF bundle** lives beside this vault, not in it - see below. | - |
 
@@ -40,7 +41,7 @@ Every note gets a `type`. Use **LOKF's own classes** - the same vocabulary the b
 
 `genre` is a closed set of exactly four values (`tutorial`, `how-to`, `reference`, `explanation`) - it says how the prose *serves the reader*, not what the note is about. It cannot carry "lecture" or "paper"; that is what `type` and `tags` are for.
 
-Anything finer goes in `tags:`. Link to a module or person in the bundle with `about:` or `isPartOf:`.
+Anything finer goes in `tags:`. Link to a module or person in the bundle with `about:` or `isPartOf:`. Two more properties the templates set and `Vault.base` reads: `module:` (the code, `CT5145`) groups the Lectures view, and `created:` sorts it. A web clip brings its own - `source`, `author`, `published` - and keeps them.
 
 ```yaml
 ---
@@ -80,4 +81,4 @@ Validate from `.lokf/` at the repository root with `just lokf-validate` and `jus
 
 ## Daily habit
 
-New note -> lands in `00-Inbox` -> gets a `type` and a `title` -> moves to its folder. Weekly, empty the inbox and ask which concept notes are ready to graduate.
+Open today's daily note first (`02-Daily/`, the calendar icon in the ribbon). New note or web clip -> lands in `00-Inbox` -> gets a `type` and a `title` -> moves to its folder; a PDF goes to `60-Assets/PDFs` and is linked by page (`[[paper.pdf#page=7]]`). Weekly, empty the inbox (`Home` embeds it) and ask which concept notes are ready to graduate. The Obsidian features this leans on, and what to use each for, are in the repository `README.md`, Part 1.
