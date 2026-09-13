@@ -117,7 +117,9 @@ Every seeded note in the vault is tagged `example`, one per stage from a raw inb
 
 ## Releases
 
-`CHANGELOG.md`'s `## [Unreleased]` section is written as changes happen. On merge to `main`, [`semantic-release.yml`](.github/workflows/semantic-release.yml) computes the next version from the commits since the last tag, retitles that section to a dated version heading and publishes a GitHub Release from it, gated behind the `release` Environment.
+`CHANGELOG.md`'s `## [Unreleased]` section is written as changes happen. On merge to `main`, [`semantic-release.yml`](.github/workflows/semantic-release.yml) computes the next version from the commits since the last tag, retitles that section to a dated version heading and publishes a GitHub Release from it, gated behind the `release` Environment. Only `feat:`, `fix:`, `security:` and a breaking-change marker cut a release; `docs:` and `chore:` merge cleanly and release nothing.
+
+Pull requests that add a `by: human:` confirmation to the knowledge bundle need a signed commit - the `provenance` job accepts a verified signature in place of an approving review, which a sole maintainer cannot give themselves. Ordinary changes need no signature, though signing everything is worth the one-time setup: [`lokf-agent-skills`](https://github.com/noelmcloughlin/lokf-agent-skills/blob/main/CONTRIBUTING.md#signing-your-commits) walks through GPG and SSH, and how to renew a GPG key before it expires. Do **not** turn on the *require signed commits* branch rule: the release job's own commit is made inside a runner and is unsigned.
 
 ## Upstream
 
