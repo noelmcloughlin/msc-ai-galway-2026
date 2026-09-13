@@ -4,8 +4,8 @@ updates:
   # current - it understands the `@<sha> # v1.2.3` pin convention used
   # throughout and opens a PR bumping both when a pinned action releases.
   # Every workflow here pins to a commit SHA, which is exactly the convention
-  # that goes stale silently: there is no actionlint/CI step in this
-  # repository that catches staleness, only Dependabot does.
+  # that goes stale silently: actionlint (lint-and-docs.yaml) checks syntax,
+  # not staleness, so only Dependabot does.
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
