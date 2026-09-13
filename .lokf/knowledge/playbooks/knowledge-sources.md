@@ -5,10 +5,10 @@ title: Knowledge sources map
 description: Where this bundle's concepts come from, and how to re-check each source.
 genre: how-to
 status: draft
-version: 1.0.0
+version: 1.1.0
 generated:
   by: process:lokf-librarian
-  at: "2026-09-12T15:30:00Z"
+  at: "2026-09-13T23:30:00Z"
 tags:
   - "assertion:user-defined"
 references:
@@ -23,13 +23,14 @@ This bundle's initial 50 concepts came from a hand-curated migration (`inputs/`,
 
 ## External sources
 
-- **University of Galway public programme page** - `source-snapshot-reference-uog-public-page`. Live URL, re-fetched directly (not summarised) on each refresh. Yields the `Programme`, `Module`, `Person`/`Role`/`Organization`, `DeliveryPattern`, `AssessmentPattern`, `LearningOutcomeSet` and `ProjectPattern` concepts, plus most of the `VerificationIssue` concepts. Re-check by fetching the page and diffing against the frontmatter of the concepts whose `resource` points at it.
+- **University of Galway public programme page** - `source-snapshot-reference-uog-public-page`. Live URL, re-fetched directly (not summarised) on each refresh. Yields the `Programme`, `Module`, `Person`/`Role`/`Organization`, `DeliveryPattern`, `AssessmentPattern`, `LearningOutcomeSet` and `ProjectPattern` concepts, plus most of the `VerificationIssue` concepts. Re-check by fetching the page and diffing against the frontmatter of the concepts whose `resource` points at it. Last re-fetched 2026-09-13: every module's semester and credits, the ten names, the "12 taught modules" sentence, the "Year 1 (90 Credits)" heading and the stray grammar-exam sentence are all still there.
 - **Technology Ireland ICT Skillnet partner page** - `source-snapshot-reference-ict-skillnet-page`. Live URL. Independently states the same programme's module list with a Core/Optional split and a Year 1/Year 2 breakdown the official page doesn't give - corroborating and, in places, contradicting the official page. Re-check the same way.
+- **Deep Learning, chapter 4 (Numerical Computation)** - `https://www.deeplearningbook.org/contents/numerical.html`, the `resource` of `concepts/gradient-descent`. A pdf2htmlEX rendering that splits words with markup, so a plain string search misses its headings; re-check with whitespace-tolerant matching for section 4.3, *Gradient-Based Optimization* (found 2026-09-13).
 - **Supplied 2026 programme extract** - `source-snapshot-reference-uog-extract-2026`. Historically a locally-supplied text file; the file itself no longer exists (only `inputs/`, kept as a placeholder, remains) so this source can no longer be independently re-fetched. Treat facts whose only `derivedFrom` is this source as unverifiable until re-derived from a live page.
 
 ## Repository sweep
 
-The host vault (`MSc-AI/`) was re-swept on 2026-09-12. It carries a small set of seeded notes, each tagged `example`, that show the path from workshop to exhibition:
+The host vault (`MSc-AI/`) was re-swept on 2026-09-12 and again on 2026-09-13, when nothing had changed but plugin manifests. It carries a small set of seeded notes, each tagged `example`, that show the path from workshop to exhibition:
 
 - `30-Knowledge/Concepts/Self-Attention.md` - a concept note with bundle-shaped frontmatter; graduated as `concepts/self-attention` (a draft until a person confirms it). Re-check: compare the note's claims with the record and with Vaswani et al. 2017 §3.2.
 - `20-Learning/Lab - Gradient descent by hand.md` - a worked tutorial; its settled facts are `concepts/gradient-descent`. Re-check against chapter 4 of the Deep Learning book (the record's `resource`).
@@ -39,11 +40,15 @@ The host vault (`MSc-AI/`) was re-swept on 2026-09-12. It carries a small set of
 
 `50-Projects/`, `60-Assets/`, `99-Archive/` and the other module folders hold only placeholders. Re-walk this list on each refresh; a `30-Knowledge/Concepts/` note that has stopped changing and is linked from two or more other notes is what graduates next (see `01-Dashboard/CONVENTIONS.md`).
 
+## Consciously left out
+
+The repository's own engineering - `README.md`, `SECURITY.md`, `AI_COVENANT.md`, `CONTRIBUTING.md`, the workflows under `.github/` and the sidecar tooling under `.lokf/` - yields no concept here. This bundle's scope is the programme and what graduates from the vault (`index.md`: entities, not episodes), and the sibling repositories' own bundles describe the skills, plugins and CI this host reuses. `.retired/` and `inputs/` are history, not sources. Revisit if the host ever grows code of its own.
+
 ## Record profile
 
 - **LOKF type:** `Playbook`
 - **Assertion basis:** `user-defined`
-- **Version:** `1.0.0`
+- **Version:** `1.1.0`
 - **Status:** `draft`
 
 ## Bundle navigation

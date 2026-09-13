@@ -8,11 +8,11 @@ status: stable
 version: 1.0.0
 verified:
   - by: process:lokf-librarian
-    at: "2026-09-11T00:00:00Z"
+    at: "2026-09-13T23:30:00Z"
 tags:
   - "assertion:source-backed"
 source_kind: official-programme-page
-reviewed_at: 2026-09-11
+reviewed_at: 2026-09-13
 ---
 
 # University of Galway online MSc AI public page

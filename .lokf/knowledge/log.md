@@ -2,6 +2,9 @@
 
 ## 2026-09-13
 
+* **Steady-state refresh** (third pass): the four live sources re-fetched raw - the University page, the ICT Skillnet page, the arXiv abstract and the Deep Learning book's chapter 4 - and 49 records re-verified against them (`verified` by `process:lokf-librarian`, 2026-09-13): the programme; all 15 modules, whose semester and credits are unchanged and which had carried no `verified` event since the 2026-09-11 edit that added those fields; the ten people, their ten roles and the teaching team; the four programme patterns; the four verification issues, each contradiction still present in the live sources (`verification-issue-assessment-leakage` now quotes the sentence as it stands on the live page, not only in the extract); the two live source records (`reviewed_at` 2026-09-13); the Vaswani reference; and `concepts/gradient-descent`. Not re-checked, so no event: `concepts/self-attention` and `concepts/transformer` (their section 3.2 claims are not on the abstract page this run could fetch), the glossary term, the ingestion playbook and the extract record (no live `resource`).
+* **Index**: the pointer to the vault's `CONVENTIONS.md` still used the path from when the bundle lived inside the vault; it now names `MSc-AI/01-Dashboard/CONVENTIONS.md` from the repository root.
+* **Source map**: gains the Deep Learning book chapter with the whitespace-tolerant re-check it needs, the 2026-09-13 vault sweep, and a note on what the bundle consciously leaves out - the repository's own engineering, which the sibling bundles describe.
 * **Layout**: the bundle moved out of the vault. `MSc-AI/knowledge_bundle/` is now `.lokf/knowledge/`
   (the sidecar's one real folder) and `knowledge_bundle` at the repository root is the doorway link,
   opened itself in Obsidian as the exhibition vault with its own `.obsidian/` (both LOKF plugins
