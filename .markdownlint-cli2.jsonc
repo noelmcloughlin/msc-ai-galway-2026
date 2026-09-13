@@ -17,6 +17,10 @@
     "**/*.md"
   ],
   "ignores": [
+    // knowledge_bundle is a link onto .lokf/knowledge (the exhibition vault's
+    // doorway, see lokf-sidecar Step 2) - the same files already linted at
+    // their real path.
+    "knowledge_bundle/**",
     "MSc-AI/90-Meta/Templates/**",
     ".retired/**",
     ".claude/**",

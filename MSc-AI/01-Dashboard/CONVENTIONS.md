@@ -18,7 +18,7 @@ Full reasoning: the repository `README.md`.
 | `60-Assets` | PDFs, images, data, slides. Default attachment location. | - |
 | `90-Meta/Templates` | Templater templates | - |
 | `99-Archive` | Done, but kept for links and history | never |
-| `knowledge_bundle/` | **The LOKF bundle** - see below. Do not reorganise by hand. | - |
+| *(not here)* | **The LOKF bundle** lives beside this vault, not in it - see below. | - |
 
 There are deliberately **no** subject folders (`Machine Learning/`, `NLP/`). `Self-Attention` belongs to Deep Learning *and* NLP *and* CT5145 *and* the dissertation. **A folder forces one choice; frontmatter and links don't**. Subjects live in `tags:` and in `01-Dashboard/MOCs/`.
 
@@ -54,9 +54,9 @@ tags: [transformers, nlp, deep-learning]
 ---
 ```
 
-## The bundle (`knowledge_bundle/`)
+## The bundle (`knowledge_bundle`, beside this vault)
 
-`knowledge_bundle/` is the LOKF knowledge bundle - a real folder of this vault, so Obsidian indexes it like any other, and the tools reach the same folder as `.lokf/knowledge`, a link at the repository root. Don't rename it: both plugins detect it by that name, and the skills and CI address it through the link. The vault is the **workshop**; this folder is the **exhibition**.
+The LOKF knowledge bundle is `.lokf/knowledge/` at the repository root, one level above this vault, and `knowledge_bundle` beside it is a link onto the same folder - the name people and Obsidian open. Open *that* as a vault of its own to curate; this vault never lists it, and a wikilink cannot cross into it, so notes here name records by path (`concepts/self-attention`). Don't reorganise it by hand: the skills and CI address it as `.lokf/knowledge`. This vault is the **workshop**; that folder is the **exhibition**.
 
 It holds **entities, not episodes**: the programme, the 15 modules, the teaching staff, the sources, the open verification issues, and concept notes that have settled. These are the stable things everything else points at. Your daily notes link *into* it.
 

@@ -43,12 +43,13 @@ modules plus the 30-ECTS capstone **CT5131**.
 
 ## The knowledge bundle
 
-`knowledge_bundle/` holds the programme, modules, staff, sources, open issues and graduated
-concepts as a LOKF knowledge graph - the **exhibition** beside this vault's workshop. It is an
-ordinary folder here; the tools reach the same files as `.lokf/knowledge` at the repository root.
-See [[CONVENTIONS]] for what belongs in it and how a note graduates. The status bar shows what the
-two plugins make of it: LOKF Registrar's well-formed check, and LOKF Curator's *confirmed by a
-person: n of N* - the number this whole setup exists to raise, slowly. Start with [[self-attention]].
+The knowledge bundle holds the programme, modules, staff, sources, open issues and graduated
+concepts as a LOKF knowledge graph - the **exhibition** beside this vault's workshop. It is not a
+folder of this vault: it is `.lokf/knowledge` at the repository root, opened in Obsidian as a vault
+of its own through the `knowledge_bundle` link beside it. See [[CONVENTIONS]] for what belongs in
+it and how a note graduates. In that vault the status bar shows what the two plugins make of it:
+LOKF Registrar's well-formed check, and LOKF Curator's *confirmed by a person: n of N* - the number
+this whole setup exists to raise, slowly. Start with `concepts/self-attention` there.
 
 ## Inbox
 

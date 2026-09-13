@@ -12,10 +12,12 @@ Navigate by subject here; the folders only say what stage a note is at (see [[CO
 ## In the bundle (the exhibition)
 
 - [[module-ct5145]] - the module record: Semester 2, 5 ECTS
-- [[self-attention]] - draft, nobody has checked it yet: **the first thing to confirm**
-- [[transformer]] - draft with an open question the sources could not settle
-- [[gradient-descent]] - checked by automation only
-- [[vaswani-2017-attention-is-all-you-need]] - the paper both concepts cite
+- `concepts/self-attention` - draft, nobody has checked it yet: **the first thing to confirm**
+- `concepts/transformer` - draft with an open question the sources could not settle
+- `concepts/gradient-descent` - checked by automation only
+- `sources/vaswani-2017-attention-is-all-you-need` - the paper both concepts cite
+
+(Paths in the exhibition vault - `knowledge_bundle`, beside this one - since a wikilink cannot cross vaults.)
 
 ## In the workshop
 

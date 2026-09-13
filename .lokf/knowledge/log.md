@@ -1,5 +1,15 @@
 # Change Log
 
+## 2026-09-13
+
+* **Layout**: the bundle moved out of the vault. `MSc-AI/knowledge_bundle/` is now `.lokf/knowledge/`
+  (the sidecar's one real folder) and `knowledge_bundle` at the repository root is the doorway link,
+  opened itself in Obsidian as the exhibition vault with its own `.obsidian/` (both LOKF plugins
+  installed, committed); the `MSc-AI` workshop vault no longer lists the bundle. Every concept `id`
+  is unchanged; the vault's notes now name records by path, since a wikilink cannot cross vaults.
+  Reason: `lokf-sidecar` retired its visible layout after a day of use showed Obsidian indexing the
+  bundle folder into the workshop's link suggestions, quick switcher, graph and search.
+
 ## 2026-09-12
 
 * **Layout**: the sidecar moved to the repository root (`.lokf/`), where the skills, `llms.txt`

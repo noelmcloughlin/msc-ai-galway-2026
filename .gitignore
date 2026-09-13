@@ -5,12 +5,11 @@
 .claude/
 skills-lock.json
 
-# Obsidian workspace state - per-machine, not shared. The vault is MSc-AI/.
-# knowledge_bundle/.obsidian/ appears only if the bundle is opened as a vault
-# of its own.
+# Obsidian workspace state - per-machine, not shared. The workshop vault is
+# MSc-AI/; the exhibition vault is knowledge_bundle (-> .lokf/knowledge), whose
+# .obsidian/ is handled by .lokf/.gitignore.
 MSc-AI/.obsidian/workspace.json
 MSc-AI/.obsidian/workspace-mobile.json
-MSc-AI/knowledge_bundle/.obsidian/
 
 # LOKF toolkit build noise is handled by .lokf/.gitignore (.venv/, __pycache__/,
 # *.pyc, lokf-tables/). uv.lock is deliberately NOT ignored: the sidecar sets
