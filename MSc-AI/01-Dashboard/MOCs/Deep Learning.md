@@ -11,7 +11,7 @@ Navigate by subject here; the folders only say what stage a note is at (see [[CO
 
 ## In the bundle (the exhibition)
 
-- [[module-ct5145]] - the module record: Semester 2, 5 ECTS
+- `modules/module-ct5145` - the module record: Semester 2, 5 ECTS
 - `concepts/self-attention` - draft, nobody has checked it yet: **the first thing to confirm**
 - `concepts/transformer` - draft with an open question the sources could not settle
 - `concepts/gradient-descent` - checked by automation only
