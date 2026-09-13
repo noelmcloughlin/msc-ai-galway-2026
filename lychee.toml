@@ -1,0 +1,13 @@
+# Same convention as the sibling LOKF repositories: URL patterns that will
+# never resolve, so lychee doesn't fail on them.
+exclude = [
+  # This repo's own placeholder base_iri (RFC 2606 reserved domain), matching
+  # the sibling repositories' own placeholder exclusions.
+  '^https://msc-ai\.example/',
+]
+
+# Retired content kept for history (see CHANGELOG "Removed"), not maintained -
+# markdownlint already skips it via .markdownlint-cli2.jsonc's own ignores.
+exclude_path = [
+  ".retired",
+]

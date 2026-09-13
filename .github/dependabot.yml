@@ -1,0 +1,27 @@
+version: 2
+updates:
+  # Keeps this repository's OWN workflows (.github/workflows/*.yaml|*.yml)
+  # current - it understands the `@<sha> # v1.2.3` pin convention used
+  # throughout and opens a PR bumping both when a pinned action releases.
+  # Every workflow here pins to a commit SHA, which is exactly the convention
+  # that goes stale silently: there is no actionlint/CI step in this
+  # repository that catches staleness, only Dependabot does.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(actions)"
+
+  # The .lokf/ sidecar's Python toolchain (the `lokf` package). This repo has
+  # no npm build of its own to track alongside it - the vault's content is
+  # the only other thing here, and that's not a dependency. A major bump can
+  # require concept frontmatter changes, so these PRs want a human read, not
+  # a rubber stamp - see the lokf-librarian skill's own "check sidecar
+  # tooling versions" step.
+  - package-ecosystem: "uv"
+    directory: "/.lokf"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore(lokf)"

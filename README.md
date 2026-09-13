@@ -4,6 +4,8 @@ One Obsidian vault, many folders, and a knowledge bundle beside it. A working sh
 
 **The vault is the workshop. The bundle is the exhibition.** Everyday notes stay in the vault and change freely; what has settled graduates into the bundle, where every record says what it is, where it came from and who last checked it - and two Obsidian plugins keep that visible while you work.
 
+> **Two ways in.** This README is one; the other is a docent. Install [`lokf-docent`](https://github.com/noelmcloughlin/lokf-agent-skills) into whatever agent you already use - `npx skills add noelmcloughlin/lokf-agent-skills --skill lokf-docent --yes` - and ask it anything about this project - *What is self-attention, and who checked it?*, say. It answers from `.lokf/knowledge/`, the checked part of what the project knows, says how far each answer has been trusted (still a draft, checked by automation only, or confirmed by a named person), opens the source for exact values, and records what it couldn't answer so the gap gets filled. One door for a person at a prompt, an agent reading this file, or a chatbot that can load a skill. **Agents:** if `.lokf/knowledge/index.md` exists, read it first - `llms.txt` says how to weigh it.
+
 ## Layout
 
 ```text
@@ -35,8 +37,9 @@ Two names, one folder. People and Obsidian use `MSc-AI/knowledge_bundle/`; the s
 3. Press **Review this note**. The card puts the source (arXiv 1706.03762) beside the claim and asks whether the source still says this. Read §3.2 of the paper, then **Confirm**. The plugin asks for your curator id once (`noelmcloughlin`), appends a `human:` event under `verified`, clears `draft`, and writes a Curation line into `log.md`. **Confirmed 1/55.**
 4. Open `knowledge_bundle/concepts/transformer`: a draft with an `## Open questions` section the librarian left - which module introduces it first? If you know, **Wrong - I corrected it** and fix the `about` list; if not, **Later**.
 5. Commit with a signed commit. The registrar workflow accepts a `human:` confirmation only when its author approved the pull request or signed the commit; [knowledge-registrar.yaml](.github/workflows/knowledge-registrar.yaml) carries the three `git config` lines.
+6. **Ask the docent.** Install `lokf-docent` into your agent ([Tooling](#tooling), below) and ask *What is self-attention, and who checked it?* The answer's footer reads *confirmed by a person* - you, a minute ago. That is the exhibition answering for itself.
 
-That is the whole loop: the librarian (an agent) derives and refreshes, you confirm, the registrar keeps it honest.
+That is the whole loop: the librarian (an agent) derives and refreshes, you confirm, the registrar keeps it honest, and the docent answers from it.
 
 ## What the seeded notes show
 
@@ -77,7 +80,7 @@ npx skills add noelmcloughlin/lokf-agent-skills \
   --skill lokf-sidecar --skill lokf-librarian --skill lokf-curator --skill lokf-docent --yes
 ```
 
-Run `lokf-librarian` from the repository root to refresh the bundle from the vault; `lokf-curator` is the same review session as the plugin, in a terminal; `lokf-docent` answers questions from the bundle first. CI runs `lokf validate` and the provenance gate on every pull request that touches the bundle; the scheduled librarian workflow stays inert until the `KNOWLEDGE_LIBRARIAN_ENABLED` repository variable is set.
+Run `lokf-librarian` from the repository root to refresh the bundle from the vault; `lokf-curator` is the same review session as the plugin, in a terminal; `lokf-docent` answers questions from the bundle first - for you at a prompt, or for any agent or chatbot pointed at this repository. CI runs `lokf validate` and the provenance gate on every pull request that touches the bundle; the scheduled librarian workflow stays inert until the `KNOWLEDGE_LIBRARIAN_ENABLED` repository variable is set.
 
 ## Status and caveats
 

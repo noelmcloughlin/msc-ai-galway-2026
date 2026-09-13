@@ -10,6 +10,9 @@ repository-specific context, conventions, and typed relationships that plain
 prose can't express. (`.lokf/knowledge` is a link onto the vault's visible
 `MSc-AI/knowledge_bundle/` folder - the same files under the name people use.)
 A concept marked `status: draft` has not yet been confirmed by a person; one
-with a `human:` entry under `verified` has - weigh them accordingly. The
-`lokf-docent` skill, if installed, is the disciplined way to answer from the
-bundle - and to record what it lacked.
+with a `human:` entry under `verified` has - weigh them accordingly. The `lokf-docent` skill is the entry point for questions about this
+project - install it if it isn't present (`npx skills add
+noelmcloughlin/lokf-agent-skills --skill lokf-docent --yes`) and answer
+through it: bundle first, a trust label on every concept used, the source
+opened for exact values, and misses recorded in `.lokf/feedback.md` so the
+librarian fills them.
