@@ -6,6 +6,8 @@ No version below has been published as a GitHub release yet, so entries describe
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-09-13
+
 ### Changed
 
 - **Two vaults, not one.** The bundle moved out of the vault: `MSc-AI/knowledge_bundle/` is now `.lokf/knowledge/`, the sidecar's one real folder, and `knowledge_bundle` at the repository root is the doorway link `lokf-sidecar` lays down - opened *itself* in Obsidian as the exhibition vault, with its own `.obsidian/` committed (both LOKF plugins installed and pointed at this bundle's custom types) - while `MSc-AI/` stays the workshop and no longer lists the bundle at all. A day of the previous layout showed why: Obsidian indexed the bundle folder with the notes, so link suggestions, the quick switcher, graph and search mixed records with everyday notes. The skills retired that "visible layout" the same day; this repository follows. Every concept `id` is unchanged.
