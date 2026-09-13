@@ -2,7 +2,7 @@
 
 The short version: **folders carry lifecycle, frontmatter carries meaning, links carry relationships.** If you are deciding where to put something, ask what *stage* it is at - not what it is *about*. What it is about goes in the frontmatter, where a note can belong to many things at once.
 
-Full reasoning: the repository `README.md`.
+The repository `README.md` walks the loop from a workshop note to a confirmed record.
 
 ## Where things go
 

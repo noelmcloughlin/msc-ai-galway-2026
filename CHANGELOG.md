@@ -2,9 +2,24 @@
 
 All notable changes to this repository are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-No version below has been published as a GitHub release yet, so entries describe development history against `main`, not user-facing upgrades. No tags exist yet either, which is why version headings carry no compare links.
+Versions are computed by semantic-release from Conventional Commits on `main`, which promotes `## [Unreleased]` into a dated heading, tags it, and publishes the GitHub Release from it; see [CONTRIBUTING.md](CONTRIBUTING.md#releasing-maintainers).
 
 ## [Unreleased]
+
+### Added
+
+- **The contributor files the sibling repositories already had**: `CONTRIBUTING.md` (setup, pre-PR checks, how a release is cut, and what the `main` ruleset does and does not enforce), `CODE_OF_CONDUCT.md`, a pull-request template and two issue templates under `.github/`.
+
+### Changed
+
+- **`README.md` polished, not restructured.** The workshop/exhibition framing is said once; the docent is introduced once and referred back to; role names carry the emphasis in the closing loop; the layout tree names every workflow and says which plugins are on in which vault; "Releases" moves to `CONTRIBUTING.md`, and a closing *Contributing, security, license* section matches the plugin READMEs. Three claims corrected: the workshop vault runs Templater only (the two LOKF plugins are installed there but off, since 1.0.1), `inputs/` no longer holds the extract, and the four `issues/` records are drafts by nature rather than records carrying an `## Open questions` section.
+- **Knowledge bundle refreshed by `lokf-librarian`** (third steady-state pass): the four live sources re-fetched raw and 49 records re-verified against them, `index.md`'s pointer to `CONVENTIONS.md` corrected for the bundle's new location, and the source map extended with the Deep Learning book chapter and a note on what the bundle consciously leaves out. See `.lokf/knowledge/log.md`.
+
+### Fixed
+
+- The exhibition vault's committed plugin manifests said LOKF Registrar 0.5.0 and LOKF Curator 0.3.0 while carrying the 1.1.0 and 1.0.0 builds; 1.0.1 updated only the workshop vault's copies. Both vaults now agree with the builds they carry.
+- `SECURITY.md` claimed pull requests must pass checks before merge; the `main` ruleset blocks deletion and force-pushes and requires linear history, and deliberately nothing more, for the reason `CONTRIBUTING.md` gives. `AI_COVENANT.md` pointed at a README section that does not exist here. `.github/dependabot.yml`'s comment said no `actionlint` step exists; one does, and it checks syntax, not staleness.
+- `Home.md`'s warning callout predated the 2026-09-11 refresh that confirmed semester and credits for every taught module; it now says what is and is not settled. Four seeded notes still pointed into the bundle by wikilink; they name records by path now, as the README says they do.
 
 ## [1.0.1] - 2026-09-13
 

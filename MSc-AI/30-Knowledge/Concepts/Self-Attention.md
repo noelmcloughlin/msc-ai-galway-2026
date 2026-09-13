@@ -13,7 +13,7 @@ created: '2026-09-12T09:00:00Z'
 # Self-Attention
 
 > [!example] Seeded note
-> A concept note that meets the graduation rule - it has stopped changing, other notes link to it, and it would be annoying to find wrong. It graduated into the bundle as [[self-attention]] on 2026-09-12. This copy stays in the workshop; the bundle record is the exhibit, and the one a person confirms.
+> A concept note that meets the graduation rule - it has stopped changing, other notes link to it, and it would be annoying to find wrong. It graduated into the bundle as `concepts/self-attention` on 2026-09-12. This copy stays in the workshop; the bundle record is the exhibit, and the one a person confirms.
 
 ## In one sentence
 

@@ -24,4 +24,4 @@ created: 2026-09-12T09:30:00Z
 
 **Result.** State of the art on WMT 2014 English-German and English-French translation at a fraction of the training cost of the recurrent models it replaced.
 
-**For me.** Filed under NLP (CT5146) because that is where I met it; the Deep Learning notes point at it too - which module actually introduces it first is an open question the bundle carries, see [[transformer]].
+**For me.** Filed under NLP (CT5146) because that is where I met it; the Deep Learning notes point at it too - which module actually introduces it first is an open question the bundle carries, see `concepts/transformer`.

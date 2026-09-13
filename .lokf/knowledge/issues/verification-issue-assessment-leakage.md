@@ -5,10 +5,13 @@ title: Apparently unrelated assessment wording
 description: Grammar/translation-course wording in the source looks unrelated to an AI programme.
 resource: "https://www.universityofgalway.ie/courses/taught-postgraduate-courses/online-artificial-intelligence.html"
 status: draft
-version: 1.0.0
+version: 1.1.0
+generated:
+  by: process:lokf-librarian
+  at: "2026-09-13T23:30:00Z"
 verified:
   - by: process:lokf-librarian
-    at: "2026-09-11T00:00:00Z"
+    at: "2026-09-13T23:30:00Z"
 tags:
   - "assertion:inferred"
 derivedFrom:
@@ -25,11 +28,13 @@ suspect_categories:
 
 Grammar, vocabulary, subtitling and translation wording appears unrelated to an AI programme. It is quarantined rather than accepted as AI assessment evidence.
 
+Still on the live official page on 2026-09-13, not only in the supplied extract: "Written and oral exams evaluate proficiency in grammar, vocabulary, comprehension, and communication." sits in the programme's own assessment text, so the issue stands against the current source rather than a stale copy of it.
+
 ## Record profile
 
 - **LOKF type:** `VerificationIssue`
 - **Assertion basis:** `inferred`
-- **Version:** `1.0.0`
+- **Version:** `1.1.0`
 - **Status:** `draft`
 
 ## Bundle navigation

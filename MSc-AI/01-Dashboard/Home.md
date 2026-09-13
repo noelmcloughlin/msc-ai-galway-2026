@@ -9,11 +9,13 @@ description: Entry point for the MSc AI vault.
 University of Galway, programme **1MAO3**. Two years part-time, online, 90 ECTS: taught
 modules plus the 30-ECTS capstone **CT5131**.
 
-> [!warning] Programme facts are not yet confirmed
-> The source extract claims 12 taught modules, names 13 topics, and lists 15 curriculum
-> entries - all labelled `Optional`, and 14 of 15 have no ECTS value. Four open
-> `VerificationIssue` records track this. Nothing here encodes year, semester, or
-> core/optional status until a human resolves them.
+> [!warning] Programme facts are not fully confirmed
+> The public sources disagree. The University page says 12 taught modules, names 13 topics
+> and lists 15 curriculum entries under a "Year 1 (90 Credits)" heading, labels every
+> module `Optional`, and carries one assessment sentence that reads as another course's;
+> the partner page splits the modules Core/Optional across two years and omits CT5186. Four
+> open `VerificationIssue` records track this. Semester and ECTS per module are confirmed
+> from the University page; year and core/optional status stay unset until a human resolves them.
 
 ## Start here
 

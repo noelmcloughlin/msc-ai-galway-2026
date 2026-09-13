@@ -20,7 +20,7 @@ This bundle holds **entities, not episodes**: the programme, its modules, its te
 the sources they are evidenced by, and the open questions about them - the stable things that
 lecture notes, labs and reading notes in the surrounding vault point *at*. Personal notes stay
 in the vault and graduate into `concepts/` only once they have settled. See
-`../01-Dashboard/CONVENTIONS.md`.
+`MSc-AI/01-Dashboard/CONVENTIONS.md`, in the workshop vault beside this bundle.
 
 `base_iri` is a placeholder (`msc-ai.example`, an RFC 2606 reserved domain) pending a real,
 owned namespace - consistent with the other LOKF bundles in this author's projects. It mints
