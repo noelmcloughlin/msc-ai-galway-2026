@@ -10,4 +10,7 @@ exclude = [
 # markdownlint already skips it via .markdownlint-cli2.jsonc's own ignores.
 exclude_path = [
   ".retired",
+  # The doorway link onto .lokf/knowledge - the same files, already checked
+  # at their real path.
+  "knowledge_bundle",
 ]

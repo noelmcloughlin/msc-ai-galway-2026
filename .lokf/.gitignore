@@ -4,9 +4,14 @@ __pycache__/
 *.pyc
 lokf-tables/
 
-# Obsidian workspace state, written into the bundle when it is opened as a
-# vault of its own. In this repository the bundle is the vault's visible
-# MSc-AI/knowledge_bundle/ folder (knowledge/ here is a link onto it), so the
-# live rule is MSc-AI/knowledge_bundle/.obsidian/ in the root .gitignore; this
-# one covers a hidden-layout checkout.
-.obsidian/
+# Obsidian state written into knowledge/ when the bundle is opened as a vault
+# of its own - the exhibition vault, reached through the root knowledge_bundle
+# link. This showcase commits that vault's plugin installs (community-plugins.json
+# and the two LOKF plugins, so a clone opens ready to curate) and ignores
+# everything else Obsidian writes there: workspace state, appearance, caches.
+knowledge/.obsidian/*
+!knowledge/.obsidian/community-plugins.json
+!knowledge/.obsidian/plugins/
+knowledge/.obsidian/plugins/*
+!knowledge/.obsidian/plugins/lokf-registrar/
+!knowledge/.obsidian/plugins/lokf-curator/

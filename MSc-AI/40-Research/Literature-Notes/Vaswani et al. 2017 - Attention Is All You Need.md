@@ -16,7 +16,7 @@ created: 2026-09-12T09:30:00Z
 # Vaswani et al. 2017 - Attention Is All You Need
 
 > [!example] Seeded note
-> A paper note. Graduated into the bundle as [[vaswani-2017-attention-is-all-you-need]] - a `Reference` record other concepts cite.
+> A paper note. Graduated into the bundle as `sources/vaswani-2017-attention-is-all-you-need` (the exhibition vault, beside this one) - a `Reference` record other concepts cite.
 
 **Claim.** Sequence transduction does not need recurrence or convolution: stacked self-attention and position-wise feed-forward layers, plus positional encodings, do the job and parallelise far better.
 

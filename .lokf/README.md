@@ -16,7 +16,7 @@ You write normal Markdown; you get a validated, queryable graph for free.
 
 ```text
 .lokf/
-|-- knowledge -> ../MSc-AI/knowledge_bundle   # the bundle, one Markdown file per concept - a link onto the vault's visible folder
+|-- knowledge/            # the bundle, one Markdown file per concept - the exhibition vault, opened via ../knowledge_bundle
 |   |-- index.md          # bundle metadata + table of contents (reserved)
 |   |-- log.md            # change history (reserved)
 |   |-- programme/  modules/  people/  sources/  issues/  glossary/  playbooks/  concepts/
@@ -34,9 +34,9 @@ per concept class with no discriminator on `type` - a project-specific type (`Mo
 the LOKF spec's prose saying consumers "MUST tolerate" both. `just lokf-validate` already
 points at it; see `knowledge/log.md`'s "Schema extension" entry for the full story.
 
-`knowledge/` here is a link: the real folder is `../MSc-AI/knowledge_bundle/`, an ordinary folder of the Obsidian vault (lokf-sidecar's
-*visible layout* for a vault host). Open the vault, not this directory. Git carries the link; if a sync service drops it, `just lokf-link`
-recreates it.
+`knowledge/` is the real folder, and `../knowledge_bundle` at the repository root is a link onto it - the name people and Obsidian open, as a
+vault of its own (the exhibition; the `MSc-AI/` vault is the workshop and never lists it). Open the link itself, never the repository root. Git
+carries the link; if a sync service or a Windows checkout drops it, `just lokf-link` recreates it.
 
 ## Prerequisites
 

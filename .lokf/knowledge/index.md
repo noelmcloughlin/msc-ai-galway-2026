@@ -30,10 +30,11 @@ Scaffolded 2026-09-11 and materialised the same day from a hand-curated source e
 (`inputs/`), migrated onto this bundle's LOKF vocabulary - see `log.md` for the
 fix-list applied. This bundle carries a small domain extension, `msc-ai.yaml` (imports
 `lokf.yaml`, a pinned copy of the core schema alongside it) - `just lokf-validate` uses it
-automatically; see `msc-ai.yaml`'s header comment for why one was needed. On 2026-09-12 the bundle
-became the vault's visible `knowledge_bundle/` folder (the tools reach it as `.lokf/knowledge`) and the
+automatically; see `msc-ai.yaml`'s header comment for why one was needed. On 2026-09-12 the
 first three concepts graduated from the vault's seeded notes - one unchecked draft, one checked by
 automation, one carrying an open question - so that every trust state the plugins show is on display.
+On 2026-09-13 the bundle moved out of the vault to `.lokf/knowledge/`, the sidecar's one real folder,
+opened in Obsidian as a vault of its own through the `knowledge_bundle` link at the repository root.
 `lokf-librarian` maintains this table of contents from here on.
 
 # Programme

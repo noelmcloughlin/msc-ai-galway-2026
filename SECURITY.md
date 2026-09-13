@@ -33,7 +33,7 @@ Only the latest published release line receives security fixes.
 
 The repository's non-Markdown execution surfaces are:
 
-- the lint-and-docs workflow in `.github/workflows/lint-and-docs.yaml` (ShellCheck, `actionlint`, markdownlint, link-checking, codespell) and the registrar workflow in `.github/workflows/knowledge-registrar.yaml`, which validates the knowledge bundle's *form* on every `.lokf/**`/`MSc-AI/knowledge_bundle/**` PR - both read-only;
+- the lint-and-docs workflow in `.github/workflows/lint-and-docs.yaml` (ShellCheck, `actionlint`, markdownlint, link-checking, codespell) and the registrar workflow in `.github/workflows/knowledge-registrar.yaml`, which validates the knowledge bundle's *form* on every `.lokf/**`/`knowledge_bundle/**` PR - both read-only;
 - the scheduled GitHub Action in `.github/workflows/knowledge-librarian.yaml`, which installs a pinned [`lokf-agent-skills`](https://github.com/noelmcloughlin/lokf-agent-skills) skill and runs it against this repo's own knowledge bundle, then opens a review PR. The agent itself runs with **no write permissions** - see "Repository hardening" below;
 - the wrapper script `.lokf/scripts/knowledge-librarian.sh`, which that workflow executes;
 - `.github/workflows/semantic-release.yml`, which computes the next version from Conventional Commits, promotes `CHANGELOG.md`, and publishes a GitHub Release from that text - no package is built here, and nothing but this workflow creates a tag;

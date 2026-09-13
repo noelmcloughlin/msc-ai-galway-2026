@@ -13,7 +13,7 @@ created: '2026-09-12T11:00:00Z'
 # Lab - Gradient descent by hand
 
 > [!example] Seeded note
-> A worked tutorial in the vault. Its settled facts live in the bundle as [[gradient-descent]]; this note is the exercise, which stays here.
+> A worked tutorial in the vault. Its settled facts live in the bundle as `concepts/gradient-descent` (the exhibition vault, beside this one); this note is the exercise, which stays here.
 
 **Goal:** feel the update rule `θ ← θ − η · f′(θ)` before trusting a library with it.
 

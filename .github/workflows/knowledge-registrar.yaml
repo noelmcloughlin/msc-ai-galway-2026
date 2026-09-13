@@ -8,7 +8,7 @@ on:
   pull_request:
     paths:
       - ".lokf/**"
-      - "MSc-AI/knowledge_bundle/**" # the bundle's visible name - the real folder, inside the vault
+      - "knowledge_bundle/**" # the bundle's second name - a link by default, a real folder on a host rearranged by hand
       - ".github/workflows/knowledge-registrar.yaml"
   schedule:
     - cron: "0 6 * * 1" # Mondays at 06:00 UTC
@@ -117,7 +117,7 @@ jobs:
           base="$(git merge-base "$BASE_SHA" "$HEAD_SHA")"
 
           mapfile -t actors < <(
-            git diff --unified=0 "$base" "$HEAD_SHA" -- .lokf/knowledge MSc-AI/knowledge_bundle | actors_in
+            git diff --unified=0 "$base" "$HEAD_SHA" -- .lokf/knowledge knowledge_bundle | actors_in
           )
 
           if [ "${#actors[@]}" -eq 0 ]; then
@@ -143,7 +143,7 @@ jobs:
             > "$commits"
 
           mapfile -t bundle_shas < <(
-            git log --format='%H' "${base}..${HEAD_SHA}" -- .lokf/knowledge MSc-AI/knowledge_bundle
+            git log --format='%H' "${base}..${HEAD_SHA}" -- .lokf/knowledge knowledge_bundle
           )
 
           unbacked=()
@@ -159,7 +159,7 @@ jobs:
             # anyone approve their own pull request.
             introducing=()
             for sha in "${bundle_shas[@]}"; do
-              if git show --unified=0 --format= "$sha" -- .lokf/knowledge MSc-AI/knowledge_bundle \
+              if git show --unified=0 --format= "$sha" -- .lokf/knowledge knowledge_bundle \
                    | actors_in | grep -qxF -- "$actor"; then
                 introducing+=("$sha")
               fi

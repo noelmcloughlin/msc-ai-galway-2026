@@ -29,6 +29,6 @@ created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 
 -
 
-<!-- Graduates to knowledge_bundle/concepts/ when: it has stopped changing, two or more
+<!-- Graduates to concepts/ in the exhibition vault (knowledge_bundle, beside this vault) when: it has stopped changing, two or more
      notes link to it, and you'd be annoyed to find it wrong in six months.
      Graduating means adding `resource:` and `status:` - see 01-Dashboard/CONVENTIONS.md -->
