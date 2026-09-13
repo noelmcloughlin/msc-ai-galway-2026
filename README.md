@@ -53,7 +53,7 @@ Worth adding when the need is real, not before: **Zotero** with ZotLit or Zotero
 - Every paper note gets a `resource:` (DOI or URL). It is what makes a claim checkable later.
 - Use the system before you build it. Add a folder, a tag or a base when a real note needs one.
 
-## Part 2 - The exhibition: when a note has settled
+## Part 2 - The exhibition: when a note has settled (optional)
 
 A concept note graduates when it has stopped changing, two or more notes link to it, and you would be annoyed to find it wrong in six months (`CONVENTIONS.md` has the rule and the frontmatter it gets). Graduated notes live in the **knowledge bundle**: `.lokf/knowledge/` beside the vault, one Markdown record per idea, each saying what it is, where it came from and who last checked it. That is [LOKF](https://lokf.nolan-nichols.com), which schema tools, CI and agents can validate and query. The two never share an index: the workshop vault does not see the bundle, and the bundle holds nothing but records.
 

@@ -60,17 +60,22 @@ jobs:
     # Solo maintainers: GitHub will not let you approve your own pull request,
     # so signing your commits is the path here - it is also the stronger claim,
     # being cryptographic and checkable long after a review could be dismissed.
-    # One-time setup with the SSH key you already push with:
+    # Either key type works; pick one and do not mix them. With a GPG key
+    # (`gpg --full-generate-key`, then `gpg --armor --export <fingerprint>`
+    # pasted at github.com/settings/keys under GPG keys):
     #
-    #   git config --global gpg.format ssh
-    #   git config --global user.signingkey ~/.ssh/id_ed25519.pub
+    #   git config --global gpg.format openpgp
+    #   git config --global user.signingkey <fingerprint>
     #   git config --global commit.gpgsign true
     #
-    # then add that same key again at github.com/settings/keys as a
-    # *signing* key - GitHub keeps auth and signing keys in separate
-    # lists, this check reads GitHub's own verdict, and a key registered
-    # only for auth leaves every commit Unverified. The commit email must
-    # also be a verified email on the account.
+    # With the SSH key you already push with, `gpg.format ssh` and
+    # `user.signingkey ~/.ssh/id_ed25519.pub` instead, then add that same key
+    # again on the same page as a *signing* key - GitHub keeps auth and
+    # signing keys in separate lists. A PGP block saved under a `.pub` name
+    # with `gpg.format ssh` fails with "could not load public key". Either
+    # way this check reads GitHub's own verdict, so a key GitHub does not
+    # hold leaves every commit Unverified, and the commit email must be a
+    # verified email on the account.
     #
     # If you genuinely cannot sign, see the `attestation` job below.
     if: github.event_name == 'pull_request'
