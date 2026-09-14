@@ -11,7 +11,7 @@ Versions are computed by semantic-release from Conventional Commits on `main`, w
 - **The pinned core schema is checked against the toolkit floor.** `just lokf-check-pin`, also a step in `knowledge-registrar.yaml` on every `.lokf/**` pull request, fails when `.lokf/lokf.yaml`'s version and `pyproject.toml`'s `lokf[build]>=` floor disagree - a stale pinned copy still validates, so nothing else caught it.
 - **The contributor files the sibling repositories already had**: `CONTRIBUTING.md` (setup, pre-PR checks, and what the `main` ruleset does and does not enforce, with the release pipeline documented once in the skills repository), `CODE_OF_CONDUCT.md`, a pull-request template and two issue templates under `.github/`.
 - **Daily notes, a base, and Templater's folder.** Daily notes is on, writing `02-Daily/<year>/` from a new `Daily note` template (core `{{date}}` syntax, so Templater is not needed for it); `01-Dashboard/Vault.base` gives five views over the vault's properties - Inbox, Lectures by module, Papers, Concepts, Daily - and `Home` embeds the Inbox one.
-- CI fails an action that is not pinned to a commit, and holds `CONTRIBUTING.md` to a word budget.
+- CI fails an action that is not pinned to a commit, and holds `CONTRIBUTING.md` and `SECURITY.md` to a word budget each.
 - **The registrar gate checks what `lokf validate` cannot**: `.lokf/scripts/knowledge-conventions.sh` from the sidecar templates (one ISO-date log heading per day, quoted timestamps, `verified` as a list, open questions in the curator's shape) and the justfile's `lokf-check-refs`, on every `.lokf/**` pull request.
 
 ### Changed
@@ -19,6 +19,7 @@ Versions are computed by semantic-release from Conventional Commits on `main`, w
 - **`README.md` rewritten Obsidian-first.** Part 1 is the workshop: a first hour in seven steps, what Obsidian gives you natively, the one plugin that is on and the one browser extension that matters, five habits. Part 2 is the exhibition: the graduation rule, the second vault, the four roles, one confirmation to try, and tooling; the layout tree names every workflow and which plugins are on in which vault, and "Releases" moves to `CONTRIBUTING.md`.
 - **The workshop vault speaks Obsidian, not LOKF.** The seeded notes and five templates drop `type`, `genre`, `about` and `resource`: what a note is becomes a tag (`lecture`, `lab`, `paper`, `concept`, `daily`), its module `module:`, and where a claim comes from `source:`, the property the Web Clipper already writes; `Vault.base` reads them and `CONVENTIONS` states the vocabulary in one table.
 - **Knowledge bundle refreshed by `lokf-librarian`** (third steady-state pass): the four live sources re-fetched raw and 49 records re-verified against them, `index.md`'s pointer to `CONVENTIONS.md` corrected for the bundle's new location, and the source map extended with the Deep Learning book chapter and a note on what the bundle consciously leaves out. See `.lokf/knowledge/log.md`.
+- **`SECURITY.md` is a policy, not a threat model**: a surface table that links to the skills repository's `docs/threat-model.md` instead of restating it.
 
 ### Fixed
 
