@@ -1,6 +1,6 @@
 # Change Log
 
-## 2026-09-14 (3)
+## 2026-09-14
 
 * **Steady-state refresh** (librarian pass; no `feedback.md` to consume). Re-fetched all four live/primary
   sources raw and found zero drift: the University page (module semester/credits, the "12 taught modules"
@@ -23,8 +23,6 @@
   is still 0.7.0, matching the pinned copy and the floor. `just lokf-validate` and `just lokf-check-refs`
   both pass on all 56 concepts.
 
-## 2026-09-14 (2)
-
 * **The host's own vocabulary is now written down where a refresh will find it.**
   `playbooks/knowledge-sources.md` gains a section saying that `.lokf/justfile`
   validates with `--schema msc-ai.yaml`, so this bundle's vocabulary is the core
@@ -36,8 +34,6 @@
   all 56 concepts; `playbooks/obsidian-workshop.md` matches the five templates,
   the six tags and `Vault.base`'s five views on disk; `lokf` on PyPI is 0.7.0,
   matching the pinned copy and the floor.
-
-## 2026-09-14
 
 * **Steady-state refresh** (librarian pass; no `feedback.md` to consume), against a `release/1.1.0`
   merge in progress. The vault dropped this bundle's vocabulary from every seeded note and template:
@@ -63,7 +59,7 @@
   `lokf.yaml`, validated with `--schema` - is unaffected; only its stated reason was wrong. The
   original entry stands as written: `log.md` is a history, and this entry is the correction.
 
-## 2026-09-13 (2)
+## 2026-09-13
 
 * **Steady-state refresh** (librarian pass; no `feedback.md` to consume). The repository README was
   rewritten Obsidian-first and the vault gained daily notes (`02-Daily/`), `01-Dashboard/Vault.base`
@@ -74,8 +70,6 @@
   re-check. `index.md` lists the playbook and no longer points at `../01-Dashboard/CONVENTIONS.md`, a
   path from before the bundle moved out of the vault. `concepts/self-attention.md` drops the word
   "showcase" from its status line, as the repository has; nothing else about it changed.
-
-## 2026-09-13
 
 * **Steady-state refresh** (third pass): the four live sources re-fetched raw - the University page, the ICT Skillnet page, the arXiv abstract and the Deep Learning book's chapter 4 - and 49 records re-verified against them (`verified` by `process:lokf-librarian`, 2026-09-13): the programme; all 15 modules, whose semester and credits are unchanged and which had carried no `verified` event since the 2026-09-11 edit that added those fields; the ten people, their ten roles and the teaching team; the four programme patterns; the four verification issues, each contradiction still present in the live sources (`verification-issue-assessment-leakage` now quotes the sentence as it stands on the live page, not only in the extract); the two live source records (`reviewed_at` 2026-09-13); the Vaswani reference; and `concepts/gradient-descent`. Not re-checked, so no event: `concepts/self-attention` and `concepts/transformer` (their section 3.2 claims are not on the abstract page this run could fetch), the glossary term, the ingestion playbook and the extract record (no live `resource`).
 * **Index**: the pointer to the vault's `CONVENTIONS.md` still used the path from when the bundle lived inside the vault; it now names `MSc-AI/01-Dashboard/CONVENTIONS.md` from the repository root.
