@@ -12,6 +12,7 @@ Versions are computed by semantic-release from Conventional Commits on `main`, w
 - **The contributor files the sibling repositories already had**: `CONTRIBUTING.md` (setup, pre-PR checks, and what the `main` ruleset does and does not enforce, with the release pipeline documented once in the skills repository), `CODE_OF_CONDUCT.md`, a pull-request template and two issue templates under `.github/`.
 - **Daily notes, a base, and Templater's folder.** Daily notes is on, writing `02-Daily/<year>/` from a new `Daily note` template (core `{{date}}` syntax, so Templater is not needed for it); `01-Dashboard/Vault.base` gives five views over the vault's properties - Inbox, Lectures by module, Papers, Concepts, Daily - and `Home` embeds the Inbox one.
 - CI fails an action that is not pinned to a commit, and holds `CONTRIBUTING.md` to a word budget.
+- **The registrar gate checks what `lokf validate` cannot**: `.lokf/scripts/knowledge-conventions.sh` from the sidecar templates (one ISO-date log heading per day, quoted timestamps, `verified` as a list, open questions in the curator's shape) and the justfile's `lokf-check-refs`, on every `.lokf/**` pull request.
 
 ### Changed
 
