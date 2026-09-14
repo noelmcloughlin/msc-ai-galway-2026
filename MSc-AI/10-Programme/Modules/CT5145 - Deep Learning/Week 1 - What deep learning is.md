@@ -1,10 +1,7 @@
 ---
-type: Document
 title: Week 1 - What deep learning is
 description: My notes from the first Deep Learning session - representation learning, why depth, what changes versus hand-crafted features.
 module: CT5145
-about:
-  - "[[module-ct5145]]"
 tags: [lecture, example]
 created: '2026-09-12T10:00:00Z'
 ---

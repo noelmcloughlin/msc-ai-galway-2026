@@ -1,28 +1,32 @@
 ---
 name: Bug report
-about: Something in the vault, the knowledge bundle, or this repo's tooling is wrong
-title: ''
+about: Report a problem with a vault, the knowledge bundle, the tooling, or CI
+title: "[Bug] "
 labels: bug
-assignees: ''
 ---
 
+**Describe the bug**
+A clear description of what went wrong.
+
 **Where?**
-The vault (`MSc-AI/`) / the knowledge bundle (`.lokf/knowledge/`) / CI or release
-tooling / the documentation
+The workshop vault (`MSc-AI/`), the exhibition vault (`knowledge_bundle`), the sidecar tooling (`just lokf-...`), or a workflow. A record that says something untrue is not a bug: open the exhibition vault and use **Wrong - I corrected it** or **Send back** on it, or name the record here and say what the source says instead.
 
-**What happened**
-A clear description of the incorrect behaviour. For a bundle record, name it by path
-rather than by wikilink - a link cannot cross vaults.
+**To reproduce**
+Steps to reproduce the behavior, including the exact command or the note you opened.
 
-**What you expected**
-What should have happened instead.
+**Expected behavior**
+What you expected to happen.
 
-**Environment**
-Obsidian version and OS if this is about the vault; which community plugins are
-enabled (LOKF Registrar, LOKF Curator, Templater, Web Clipper); output of
-`cd .lokf && just lokf-validate` if it concerns the bundle.
+## Environment
+
+- OS:
+- Obsidian version (vault issues only):
+- LOKF Registrar / LOKF Curator versions (Settings → Community plugins):
+- `uv run lokf --version` from `.lokf/` (tooling issues only):
+
+**Additional context**
+Screenshots, console errors (Ctrl/Cmd+Shift+I), or `just lokf-validate` output.
 
 ## AI Assistance
 
-If you used AI tools while preparing this issue, you are still the author and responsible for understanding, verifying, and defending your submission. Don't dump LLM output into
-this issue without curation. See the [AI Covenant](../../AI_COVENANT.md) for details.
+If you used AI tools while preparing this issue, you are still the author and responsible for understanding, verifying, and defending your submission. Don't dump LLM output into this issue without curation. See the [AI Covenant](https://github.com/noelmcloughlin/msc-ai-galway-2026/blob/main/AI_COVENANT.md) for details.

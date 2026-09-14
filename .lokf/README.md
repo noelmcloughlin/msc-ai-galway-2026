@@ -21,18 +21,18 @@ You write normal Markdown; you get a validated, queryable graph for free.
 |   |-- log.md            # change history (reserved)
 |   |-- programme/  modules/  people/  sources/  issues/  glossary/  playbooks/  concepts/
 |-- lokf.yaml             # pinned copy of the core LOKF schema (0.7.0), for msc-ai.yaml to import
-|-- msc-ai.yaml           # this bundle's domain extension - see its header comment for why
+|-- msc-ai.yaml           # this bundle's domain schema: LOKF core plus its own classes and keys
 |-- pyproject.toml        # declares the `lokf` toolkit as a dependency
 |-- justfile              # convenience commands (below)
 |-- scripts/knowledge-librarian.sh   # the scheduled librarian's wrapper, run by .github/workflows/knowledge-librarian.yaml
 |-- feedback.md           # appears once a reader's agent records a gap; input for the librarian, not knowledge
 ```
 
-`msc-ai.yaml` exists because the generated core schema sets `additionalProperties: false`
-per concept class with no discriminator on `type` - a project-specific type (`Module`,
-`Programme`, ...) or a project-specific key on any concept fails validation outright, despite
-the LOKF spec's prose saying consumers "MUST tolerate" both. `just lokf-validate` already
-points at it; see `knowledge/log.md`'s "Schema extension" entry for the full story.
+`msc-ai.yaml` extends the LOKF vocabulary into this domain: a LinkML schema that imports the
+pinned `lokf.yaml` and adds the classes and keys a degree programme needs (`Programme`,
+`Module`, `ects`, ...). `just lokf-validate` checks every record against both. The recipe,
+and what such a schema does and does not do, is the librarian skill's
+[domain-schema reference](https://github.com/noelmcloughlin/lokf-agent-skills/blob/main/skills/lokf-librarian/references/domain-schema.md).
 
 `knowledge/` is the real folder, and `../knowledge_bundle` at the repository root is a link onto it - the name people and Obsidian open, as a
 vault of its own (the exhibition; the `MSc-AI/` vault is the workshop and never lists it). Open the link itself, never the repository root. Git
@@ -71,7 +71,7 @@ not yet aware of `msc-ai.yaml`'s classes and slots.)
 ## Add or edit a concept
 
 1. Create a Markdown file under `knowledge/<kind>/` (e.g. `modules/`, `people/`).
-2. Start with frontmatter. OKF requires only `type`; this bundle also sets `id`, `title`, `description`, and `resource` on every concept. If it's a new project-specific type or carries a project-specific key, add it to `msc-ai.yaml` first, or `lokf validate` will reject it.
+2. Start with frontmatter. OKF requires only `type`; this bundle also sets `id`, `title`, `description`, and `resource` on every concept. A new class or key of this domain's own is declared in `msc-ai.yaml` first, and `type` names the class exactly.
 3. Link concepts with typed-relation keys whose values are target `id`s - e.g. `dependsOn:`, `about:`, `references:`, `isPartOf:`. Run `uv run lokf vocab` to list available relations.
 4. Add the concept to the table of contents in `knowledge/index.md`.
 5. Run `just lokf-validate` before committing.

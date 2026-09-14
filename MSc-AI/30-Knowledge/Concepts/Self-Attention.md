@@ -1,19 +1,16 @@
 ---
-type: Explanation
-genre: explanation
 title: Self-Attention
 description: How scaled dot-product attention lets every token weight every other token, and why the scaling by √d_k is there.
-resource: https://arxiv.org/abs/1706.03762
-about:
-  - "[[module-ct5145]]"
-tags: [transformers, deep-learning, example]
+source: https://arxiv.org/abs/1706.03762
+module: CT5145
+tags: [concept, transformers, deep-learning, example]
 created: '2026-09-12T09:00:00Z'
 ---
 
 # Self-Attention
 
 > [!example] Seeded note
-> A concept note that meets the graduation rule - it has stopped changing, other notes link to it, and it would be annoying to find wrong. It graduated into the bundle as [[self-attention]] on 2026-09-12. This copy stays in the workshop; the bundle record is the exhibit, and the one a person confirms.
+> A concept note that meets the graduation rule - it has stopped changing, other notes link to it, it names its `source`, and it would be annoying to find wrong. It graduated into the bundle as `concepts/self-attention` on 2026-09-12: the librarian derived the record and gave it the bundle's own vocabulary (`type`, `resource`, `status`). This copy stays in the workshop with Obsidian's; the bundle record is the exhibit, and the one a person confirms.
 
 ## In one sentence
 

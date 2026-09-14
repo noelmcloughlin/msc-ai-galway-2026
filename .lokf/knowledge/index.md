@@ -20,7 +20,7 @@ This bundle holds **entities, not episodes**: the programme, its modules, its te
 the sources they are evidenced by, and the open questions about them - the stable things that
 lecture notes, labs and reading notes in the surrounding vault point *at*. Personal notes stay
 in the vault and graduate into `concepts/` only once they have settled. See
-`MSc-AI/01-Dashboard/CONVENTIONS.md` at the repository root, and `playbooks/obsidian-workshop.md` here.
+`MSc-AI/01-Dashboard/CONVENTIONS.md`, in the workshop vault beside this bundle, and `playbooks/obsidian-workshop.md` here.
 
 `base_iri` is a placeholder (`msc-ai.example`, an RFC 2606 reserved domain) pending a real,
 owned namespace - consistent with the other LOKF bundles in this author's projects. It mints
@@ -28,9 +28,10 @@ every concept `@id`, so migrating it later rewrites all of them; cheap now, expe
 
 Scaffolded 2026-09-11 and materialised the same day from a hand-curated source extract
 (`inputs/`), migrated onto this bundle's LOKF vocabulary - see `log.md` for the
-fix-list applied. This bundle carries a small domain extension, `msc-ai.yaml` (imports
-`lokf.yaml`, a pinned copy of the core schema alongside it) - `just lokf-validate` uses it
-automatically; see `msc-ai.yaml`'s header comment for why one was needed. On 2026-09-12 the
+fix-list applied. This bundle extends the LOKF vocabulary into its domain with `msc-ai.yaml`
+(a LinkML schema importing `lokf.yaml`, the pinned copy of the core schema beside it), which
+`just lokf-validate` passes automatically, so a record here may name one of this domain's own
+classes as well as a core one. On 2026-09-12 the
 first three concepts graduated from the vault's seeded notes - one unchecked draft, one checked by
 automation, one carrying an open question - so that every trust state the plugins show is on display.
 On 2026-09-13 the bundle moved out of the vault to `.lokf/knowledge/`, the sidecar's one real folder,

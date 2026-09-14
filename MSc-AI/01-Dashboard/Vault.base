@@ -11,7 +11,7 @@ views:
         - file.inFolder("00-Inbox")
     order:
       - file.name
-      - note.type
+      - file.tags
       - file.mtime
   - type: table
     name: Lectures
@@ -29,12 +29,12 @@ views:
     name: Papers
     filters:
       and:
-        - note.type == "Reference"
+        - file.hasTag("paper")
     order:
       - file.name
       - note.year
       - note.venue
-      - note.resource
+      - note.source
   - type: table
     name: Concepts
     filters:
@@ -42,7 +42,7 @@ views:
         - file.inFolder("30-Knowledge")
     order:
       - file.name
-      - note.type
+      - note.source
       - note.description
       - file.mtime
   - type: table

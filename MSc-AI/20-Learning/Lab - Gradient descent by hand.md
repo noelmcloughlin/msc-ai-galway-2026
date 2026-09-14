@@ -1,11 +1,7 @@
 ---
-type: Tutorial
-genre: tutorial
 title: Lab - Gradient descent by hand
 description: Minimise f(θ) = (θ − 3)² with gradient descent, step by step on paper, to see what the learning rate does.
 module: CT5170
-about:
-  - "[[module-ct5170]]"
 tags: [lab, optimisation, example]
 created: '2026-09-12T11:00:00Z'
 ---

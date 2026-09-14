@@ -1,5 +1,4 @@
 ---
-type: Document
 title: "{{date:YYYY-MM-DD}}"
 description: Study log for {{date:D MMMM YYYY}}.
 tags: [daily]

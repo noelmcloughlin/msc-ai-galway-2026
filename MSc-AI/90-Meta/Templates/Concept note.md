@@ -1,19 +1,19 @@
 ---
-type: Explanation
-genre: explanation
 title: <% tp.file.title %>
 description:
-about:
-tags: []
+source:
+module:
+tags: [concept]
 created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 ---
 
 # <% tp.file.title %>
 
 <%* /* A synthesised concept note - the most valuable kind in this vault.
-       Diátaxis "explanation": understanding-oriented, discursive, permits reflection.
+       Understanding-oriented, discursive, permits reflection.
        Keep task steps and reference tables OUT; link to them instead.
-       `about:` should point at the module or bundle concept this explains. */ %>
+       `source:` is where the claim comes from (DOI or URL) - it is what the
+       exhibition will ask of this note; `module:` is the code (CT5145). */ %>
 
 ## In one sentence
 
@@ -30,5 +30,5 @@ created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 -
 
 <!-- Graduates to concepts/ in the exhibition vault (knowledge_bundle, beside this vault) when: it has stopped changing, two or more
-     notes link to it, and you'd be annoyed to find it wrong in six months.
-     Graduating means adding `resource:` and `status:` - see 01-Dashboard/CONVENTIONS.md -->
+     notes link to it, and you'd be annoyed to find it wrong in six months. It needs a `source` and a
+     `description` by then; the librarian derives the record - see 01-Dashboard/CONVENTIONS.md -->
