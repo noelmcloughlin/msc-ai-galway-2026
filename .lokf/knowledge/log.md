@@ -2,6 +2,21 @@
 
 ## 2026-09-14
 
+* **Steady-state refresh** (librarian pass; no `feedback.md` to consume), against the three commits
+  since the 13:00 pass - `f625f0b`, `f985511` and `80308a5`. No concept changed: the first two touch
+  the registrar workflow, the conventions script and two records already corrected at 15:19, and the
+  third is `SECURITY.md`, `lint-and-docs.yaml` and `CHANGELOG.md`, all of which this bundle
+  consciously leaves out of scope. No vault note changed, and the four external sources were
+  re-fetched with zero drift five hours earlier, so nothing was re-fetched and no `verified` event
+  was refreshed except this map's own. **Drift found and reported, not fixed:** `80308a5` refreshed
+  the plugin builds in the workshop vault (`MSc-AI/.obsidian/plugins/`) only, leaving the exhibition
+  vault (`.lokf/knowledge/.obsidian/plugins/`) on older copies of both plugins - LOKF Curator's
+  manifest there still reads `1.0.0` against the workshop's `1.1.0`, and both plugins' `main.js`
+  differ between the vaults while the workshop's byte-match the current builds. The same divergence
+  was recorded as fixed before 1.0.1 and has recurred, so `playbooks/knowledge-sources.md` now names
+  both plugin directories under **Consciously left out**, with how to check them and why the fix is
+  the maintainer's rather than a refresh's.
+
 * **Steady-state refresh** (librarian pass; no `feedback.md` to consume). Re-fetched all four live/primary
   sources raw and found zero drift: the University page (module semester/credits, the "12 taught modules"
   sentence, the "Year 1 (90 Credits)" heading, the grammar-exam sentence, workload/assessment/capstone/

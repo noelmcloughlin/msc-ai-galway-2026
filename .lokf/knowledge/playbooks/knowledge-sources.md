@@ -8,7 +8,10 @@ status: draft
 version: 1.1.0
 generated:
   by: process:lokf-librarian
-  at: "2026-09-14T12:45:00Z"
+  at: "2026-09-14T18:15:00Z"
+verified:
+  - by: process:lokf-librarian
+    at: "2026-09-14T18:15:00Z"
 tags:
   - "assertion:user-defined"
 references:
@@ -59,6 +62,8 @@ moved past.
 ## Consciously left out
 
 The repository's own engineering - `README.md`, `SECURITY.md`, `AI_COVENANT.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, the issue and pull-request templates and `dependabot.yml` under `.github/`, the workflows under `.github/workflows/` and the sidecar tooling under `.lokf/` - yields no concept here. This bundle's scope is the programme and what graduates from the vault (`index.md`: entities, not episodes), and the sibling repositories' own bundles describe the skills, plugins and CI this host reuses. `.retired/` and `inputs/` are history, not sources. Revisit if the host ever grows code of its own.
+
+The two vaults' committed plugin installs - `MSc-AI/.obsidian/plugins/` in the workshop and `.lokf/knowledge/.obsidian/plugins/` in the exhibition, each holding LOKF Registrar's and LOKF Curator's `main.js` and `manifest.json` - yield no concept either: they are build artefacts of the sibling repositories, carrying no claim this bundle asserts. They are named here because they have now drifted apart **twice** (once before 1.0.1, and again on 2026-09-14 in commit `80308a5`, which refreshed only the workshop's copies), and a refresh that does not know to look will keep re-discovering it. Check by comparing both vaults' copies of each file; a stale copy under a correct-looking `manifest.json` version is the failure mode that hides longest. Report it rather than fixing it here: which build is current is the plugin repositories' answer, not this bundle's.
 
 ## Record profile
 
