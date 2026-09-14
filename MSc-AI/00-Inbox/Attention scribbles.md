@@ -4,4 +4,4 @@ Multi-head = several attention "views" in parallel, concatenated, then projected
 
 TODO turn this into a concept note. Half of it is already in [[Self-Attention]].
 
-(Example note: a raw inbox capture - no frontmatter at all. Obsidian is fine with it; LOKF Registrar ignores it, because a note with no frontmatter is not a concept.)
+(Example note: a raw inbox capture - no frontmatter at all. Obsidian is fine with it; the Inbox view in `Vault.base` lists it until it gets its tags and a folder, or is deleted.)

@@ -1,20 +1,16 @@
 ---
-type: Tutorial
-genre: tutorial
 title: <% tp.file.title %>
 description:
 module:
-about:
 tags: [lab]
 created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 ---
 
 # <% tp.file.title %>
 
-<%* /* A lab or practical worked end to end. LOKF's `Tutorial` class is exactly this:
-       "a guided, end-to-end practical activity through which a reader acquires a skill
-       by doing" - it assumes no prior competence and aims at learning.
-       (A procedure you'll repeat is a `Playbook` with `genre: how-to` instead.) */ %>
+<%* /* A lab or practical worked end to end: a guided activity through which you
+       acquire a skill by doing. The exercise stays in the vault; what it settles
+       becomes a Concept note. Set `module:` to the code (CT5170). */ %>
 
 **Module:**
 **Date:** <% tp.date.now("YYYY-MM-DD") %>

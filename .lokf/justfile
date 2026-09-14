@@ -14,13 +14,30 @@ default:
 lokf-install:
     uv sync
 
-# Assemble and validate the knowledge bundle against msc-ai.yaml, this bundle's
-# domain extension (it imports lokf.yaml and adds the classes and slots the
-# generated core schema's additionalProperties:false would otherwise reject -
-# see knowledge/log.md, "Schema extension"). convert/serve/query have no
-# --schema flag and resolve the plain core schema via the local lokf.yaml copy.
-lokf-validate:
+# Assemble and validate the knowledge bundle against msc-ai.yaml, which extends
+# the LOKF vocabulary into this domain: it imports the pinned lokf.yaml and adds
+# the classes and keys a degree programme needs. convert/serve/query have no
+# --schema flag and resolve the core schema via that same local copy.
+lokf-validate: lokf-check-pin
     uv run lokf validate --schema {{ schema }} {{ bundle }}
+
+# Confirm the pinned core schema is the version this sidecar's toolkit floor
+# declares. A stale lokf.yaml still validates - against a vocabulary the
+# toolkit has moved past - so nothing else catches it. The same check runs in
+# knowledge-registrar.yaml on every .lokf/** pull request.
+lokf-check-pin:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    pinned="$(grep -m1 '^version:' lokf.yaml | awk '{print $2}')"
+    floor="$(grep -o 'lokf\[build\]>=[0-9][0-9.]*' pyproject.toml | head -1 | sed 's/.*>=//')"
+    if [[ "$pinned" == "$floor" ]]; then
+      echo "OK - pinned lokf.yaml $pinned matches the lokf[build] floor"
+    else
+      echo "FAIL - lokf.yaml is pinned at $pinned but pyproject.toml floors lokf[build] at $floor" >&2
+      echo "       Refresh the pinned copy in the same change as the bump; the recipe is in" >&2
+      echo "       lokf-agent-skills, skills/lokf-librarian/references/domain-schema.md." >&2
+      exit 1
+    fi
 
 # Project the bundle (or a concept file) to RDF (Turtle) on stdout
 lokf-convert FILE=bundle:

@@ -1,6 +1,10 @@
 # Same convention as the sibling LOKF repositories: URL patterns that will
 # never resolve, so lychee doesn't fail on them.
 exclude = [
+  # LOKF's published JSON-LD context; upstream's identifier, not this repo's,
+  # currently 404s. Declared bare in .lokf/knowledge/index.md's frontmatter,
+  # so lychee does check it. Drop once the w3id.org redirect is registered.
+  '^https://w3id\.org/lokf/context\.jsonld$',
   # This repo's own placeholder base_iri (RFC 2606 reserved domain), matching
   # the sibling repositories' own placeholder exclusions.
   '^https://msc-ai\.example/',

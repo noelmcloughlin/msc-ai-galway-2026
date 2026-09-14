@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an improvement to the showcase
+about: Suggest an improvement to a vault, the knowledge bundle, or the tooling
 title: "[Feature] "
 labels: enhancement
 ---
@@ -12,7 +12,7 @@ What problem would this solve?
 What you'd like to happen.
 
 **Which part does it affect?**
-The workshop vault, the exhibition vault, the bundle's schema (`msc-ai.yaml`), the tooling, or CI. A change to what a *skill* or *plugin* does belongs upstream - see the README's Upstream section.
+The workshop vault, the exhibition vault, the bundle's schema (`msc-ai.yaml`), the tooling, or CI. The two vaults are kept deliberately separate: say whether this is about how notes are captured, organised or templated day to day, or about the records derived from them. A change to what a *skill* or *plugin* does belongs upstream - see the README's Upstream section.
 
 **Alternatives considered**
 Any alternative approaches.

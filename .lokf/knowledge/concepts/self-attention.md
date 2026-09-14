@@ -10,6 +10,9 @@ version: 1.0.0
 generated:
   by: process:lokf-librarian
   at: "2026-09-12T15:30:00Z"
+verified:
+  - by: process:lokf-librarian
+    at: "2026-09-14T13:00:00Z"
 tags:
   - "assertion:source-backed"
 about:
@@ -31,7 +34,7 @@ Derived on 2026-09-12 from the vault note `30-Knowledge/Concepts/Self-Attention.
 - **LOKF type:** `Explanation`
 - **Assertion basis:** `source-backed`
 - **Version:** `1.0.0`
-- **Status:** `draft` - nobody has checked this yet; it is the showcase's first concept to confirm
+- **Status:** `draft` - nobody has checked this yet; it is the first concept to confirm
 
 ## Bundle navigation
 

@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a problem with this showcase - a vault, the tooling, or CI
+about: Report a problem with a vault, the knowledge bundle, the tooling, or CI
 title: "[Bug] "
 labels: bug
 ---

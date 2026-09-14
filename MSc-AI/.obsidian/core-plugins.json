@@ -19,7 +19,7 @@
   "canvas": true,
   "footnotes": true,
   "bases": true,
-  "daily-notes": false,
+  "daily-notes": true,
   "slash-command": false,
   "random-note": false,
   "markdown-importer": false,

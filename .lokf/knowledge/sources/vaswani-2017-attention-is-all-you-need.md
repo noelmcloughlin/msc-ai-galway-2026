@@ -12,7 +12,7 @@ generated:
   at: "2026-09-12T15:30:00Z"
 verified:
   - by: process:lokf-librarian
-    at: "2026-09-13T23:30:00Z"
+    at: "2026-09-14T13:00:00Z"
 tags:
   - "assertion:source-backed"
 ---

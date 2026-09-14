@@ -10,6 +10,9 @@ version: 1.0.0
 generated:
   by: process:lokf-librarian
   at: "2026-09-12T15:30:00Z"
+verified:
+  - by: process:lokf-librarian
+    at: "2026-09-14T13:00:00Z"
 tags:
   - "assertion:inferred"
 about:
@@ -47,4 +50,4 @@ Material changes should retain source evidence and pass human review before publ
 
 ## Open questions
 
-- Which module introduces the Transformer first, CT5145 (Deep Learning) or CT5146 (Introduction to Natural Language Processing)? The University's public module pages list no syllabus detail, so the librarian could not settle it from the sources; the two `about` links record both candidates until a person who has the module descriptors decides. (process:lokf-librarian, 2026-09-12)
+- 2026-09-12, process:lokf-librarian: which module introduces the Transformer first, CT5145 (Deep Learning) or CT5146 (Introduction to Natural Language Processing)? The University's public module pages list no syllabus detail, so the librarian could not settle it from the sources; the two `about` links record both candidates until a person who has the module descriptors decides.

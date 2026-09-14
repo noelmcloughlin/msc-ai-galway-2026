@@ -43,8 +43,45 @@ jobs:
         run: uv sync
         working-directory: .lokf
 
+      # Host-specific step, not in the lokf-sidecar template: this bundle
+      # validates against a domain schema, so it keeps a pinned copy of the
+      # core schema for msc-ai.yaml to import. A stale copy still validates -
+      # against a vocabulary the toolkit has moved past - so nothing else
+      # catches it. Same check as `just lokf-check-pin`, inlined so the job
+      # needs no extra tooling.
+      - name: Check the pinned core schema matches the toolkit floor
+        run: |
+          pinned="$(grep -m1 '^version:' lokf.yaml | awk '{print $2}')"
+          floor="$(grep -o 'lokf\[build\]>=[0-9][0-9.]*' pyproject.toml | head -1 | sed 's/.*>=//')"
+          if [ "$pinned" = "$floor" ]; then
+            echo "OK - pinned lokf.yaml $pinned matches the lokf[build] floor"
+          else
+            echo "::error::lokf.yaml is pinned at $pinned but pyproject.toml floors lokf[build] at $floor - refresh the pinned copy in the same change as the bump"
+            exit 1
+          fi
+        working-directory: .lokf
+
       - name: Validate the knowledge bundle
         run: uv run lokf validate --schema msc-ai.yaml knowledge
+        working-directory: .lokf
+
+      # `lokf validate` reads a concept body as an opaque string and never
+      # opens log.md, so the conventions the skills and both Obsidian plugins
+      # rely on - one ISO-date heading per day, quoted timestamps, `verified`
+      # as a list with one librarian event, open questions in the shape the
+      # curator reads - are checked by the script the sidecar lays down beside
+      # the agent wrapper. Each of them has been broken by an agent that had
+      # the rule in prose.
+      - name: Check the conventions lokf validate cannot see
+        run: bash scripts/knowledge-conventions.sh knowledge
+        working-directory: .lokf
+
+      # A typed relation whose target is not a concept in the bundle is still
+      # a well-formed IRI, so `lokf validate` passes it. The justfile's
+      # lokf-check-refs recipe closes that gap with a SPARQL query; `just`
+      # itself comes from PyPI through uvx so the runner needs nothing else.
+      - name: Every typed-relation target resolves to a concept
+        run: uvx --from 'rust-just==1.47.0' just lokf-check-refs
         working-directory: .lokf
 
   provenance:
@@ -60,17 +97,22 @@ jobs:
     # Solo maintainers: GitHub will not let you approve your own pull request,
     # so signing your commits is the path here - it is also the stronger claim,
     # being cryptographic and checkable long after a review could be dismissed.
-    # One-time setup with the SSH key you already push with:
+    # Either key type works; pick one and do not mix them. With a GPG key
+    # (`gpg --full-generate-key`, then `gpg --armor --export <fingerprint>`
+    # pasted at github.com/settings/keys under GPG keys):
     #
-    #   git config --global gpg.format ssh
-    #   git config --global user.signingkey ~/.ssh/id_ed25519.pub
+    #   git config --global gpg.format openpgp
+    #   git config --global user.signingkey <fingerprint>
     #   git config --global commit.gpgsign true
     #
-    # then add that same key again at github.com/settings/keys as a
-    # *signing* key - GitHub keeps auth and signing keys in separate
-    # lists, this check reads GitHub's own verdict, and a key registered
-    # only for auth leaves every commit Unverified. The commit email must
-    # also be a verified email on the account.
+    # With the SSH key you already push with, `gpg.format ssh` and
+    # `user.signingkey ~/.ssh/id_ed25519.pub` instead, then add that same key
+    # again on the same page as a *signing* key - GitHub keeps auth and
+    # signing keys in separate lists. A PGP block saved under a `.pub` name
+    # with `gpg.format ssh` fails with "could not load public key". Either
+    # way this check reads GitHub's own verdict, so a key GitHub does not
+    # hold leaves every commit Unverified, and the commit email must be a
+    # verified email on the account.
     #
     # If you genuinely cannot sign, see the `attestation` job below.
     if: github.event_name == 'pull_request'

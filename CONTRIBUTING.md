@@ -1,6 +1,8 @@
 # Contributing to msc-ai-galway-2026
 
-Thanks for your interest in improving this showcase.
+*This file is a checklist, not a design log. Each rule is a line or two that links to where its reasoning lives - a code comment, a workflow header, or a page in the skills repository - and CI's docs job holds the file to a word budget so it stays that way.*
+
+Thanks for your interest in improving this repository.
 
 ## What this repository is
 
@@ -31,23 +33,24 @@ just lokf-check-refs   # every typed relation resolves
 
 ### Agent skills (optional)
 
-The bundle is maintained with [lokf-agent-skills](https://github.com/noelmcloughlin/lokf-agent-skills), **installed, never committed**: `.agents/`, `.claude/` and `skills-lock.json` are git-ignored, and CI installs the librarian skill itself at run time, pinned to a release.
+The bundle is maintained with [lokf-agent-skills](https://github.com/noelmcloughlin/lokf-agent-skills), **installed, never committed**: `.agents/`, `.claude/` and `skills-lock.json` are git-ignored, and CI installs the librarian itself at run time, at the release `LOKF_SKILLS_REF` in [`knowledge-librarian.yaml`](.github/workflows/knowledge-librarian.yaml) names.
 
 ```bash
 npx skills add noelmcloughlin/lokf-agent-skills \
   --skill lokf-sidecar --skill lokf-librarian --skill lokf-curator --skill lokf-docent --yes
 ```
 
-`lokf-librarian` derives and refreshes records from the vault and the public sources; `lokf-curator` records a person's verdict, the same session the LOKF Curator plugin runs in the editor; `lokf-docent` answers questions from the bundle; `lokf-sidecar` only repairs the sidecar's own files. None is needed to edit a workshop note.
+`lokf-librarian` derives and refreshes records, `lokf-curator` records a person's verdict, `lokf-docent` answers from the bundle, and `lokf-sidecar` repairs the sidecar's own files. None is needed to edit a workshop note.
 
 ## Before opening a pull request
 
 - **Bundle changes**: `cd .lokf && just lokf-validate && just lokf-check-refs` must both pass. The registrar workflow runs the first on every pull request that touches `.lokf/**`; it keeps records well-formed and never judges whether they are true.
-- **A `human:` confirmation must be yours to make.** A pull request that adds a `by: human:<id>` event under `verified` passes the registrar's `provenance` job only if that account approved the pull request or signed the commit that introduced it. A solo maintainer cannot approve their own pull request, so sign: the three `git config` lines are in the comments of [`knowledge-registrar.yaml`](.github/workflows/knowledge-registrar.yaml), and the [skills repository's guide](https://github.com/noelmcloughlin/lokf-agent-skills/blob/main/CONTRIBUTING.md#signing-your-commits) walks through GPG and SSH setup.
+- **A `human:` confirmation must be yours to make.** A pull request that adds a `by: human:<id>` event under `verified` passes the registrar's `provenance` job only if that account approved the pull request or signed the commit; a solo maintainer cannot approve their own, so sign - [Signing your commits](https://github.com/noelmcloughlin/lokf-agent-skills/blob/main/docs/signing-commits.md) walks through GPG and SSH.
 - **Prose changes**: `lint-and-docs.yaml` runs markdownlint against `.markdownlint-cli2.jsonc`, link-checking against `lychee.toml`, and codespell over every `*.md`. Run `npx markdownlint-cli2` locally before pushing. Templater templates and `.retired/` are excluded on purpose.
-- **Workflow or script changes**: expect ShellCheck and `actionlint` to have an opinion. Every action is pinned to a commit SHA with the version in a trailing comment; keep that convention, and let Dependabot (`.github/dependabot.yml`) bump the pins rather than floating one to a tag.
-- **If your change alters content or behaviour** (not just wording), add an entry under `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md). The release pipeline refuses to run on an empty one.
-- Keep changes focused; the PR template's checklist is the short version of this section.
+- A link into a sibling repository must already resolve on that repository's `main` - the link check follows it for real. Land upstream content first; `lychee.toml` is only for links permanently outside our control.
+- **Workflow or script changes**: expect ShellCheck and `actionlint` to have an opinion. Every action is pinned to a commit SHA with the version in a trailing comment; CI fails one that is not, and Dependabot (`.github/dependabot.yml`) bumps the pins.
+- **If your change alters content or behaviour**, not just wording, add a line or two under `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md). The release pipeline refuses an empty one.
+- Keep changes focused; the PR template's checklist is the short form of this list.
 
 ## Code of conduct
 
@@ -59,20 +62,11 @@ AI assistance is welcome; this repository's own bundle is refreshed by an agent 
 
 ## Releasing (maintainers)
 
-The version number is not hand-picked. Write `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md) as you go, with a [Conventional Commits](https://www.conventionalcommits.org/) type on each commit, and open the pull request as normal. **Only `feat:`, `fix:` and `security:` cut a release.** `docs:`, `chore:`, `refactor:`, `style:` and `test:` merge, release nothing, and leave their changelog entries to ship with the next release that does. If a pull request should release and its commits are typed too quietly, squash-merge it and give the squash commit the right type.
-
-On a push to `main`, [`semantic-release.yml`](.github/workflows/semantic-release.yml):
-
-1. computes the next version from the commits since the last tag, and stops if none warrant one;
-2. refuses to proceed if `## [Unreleased]` is empty (`.github/scripts/changelog-release.mjs check`);
-3. retitles that section to `## [X.Y.Z] - YYYY-MM-DD` with a fresh empty one above it, commits the changelog, creates the `vX.Y.Z` tag, and publishes a GitHub Release whose notes are the promoted section.
-
-Every pull request into `main` gets a `--dry-run` preview of the same, so a broken commit message or script is caught in review. The `release` job runs behind the `release` GitHub Environment - **configure required reviewers on it once, in Settings → Environments** - or every qualifying merge ships unattended.
+Commits typed with [Conventional Commits](https://www.conventionalcommits.org/) decide the version, and `## [Unreleased]` is the release note. On a push to `main`, [`semantic-release.yml`](.github/workflows/semantic-release.yml) promotes the changelog, creates the `vX.Y.Z` tag and publishes a GitHub Release whose notes are the promoted section; every pull request gets a `--dry-run` preview of the same. [How the LOKF repositories release](https://github.com/noelmcloughlin/lokf-agent-skills/blob/main/docs/releasing.md) has the whole pipeline and the `release` Environment that gates it.
 
 ### What the repository settings mean for you
 
-- **Changes reach `main` by pull request, but no ruleset enforces it.** The ruleset on `main` blocks deletion and force-pushes and requires linear history, and stops there. A rule requiring pull requests, or passing status checks, would also reject the release job's own push of the promoted changelog, and `github-actions[bot]` cannot be put on a ruleset's bypass list. So the pull-request discipline is a convention held to by the maintainer. CI runs on every pull request and is read before merge, but it is not what blocks one; treat a red check as yours to fix.
-- **"Require signed commits" as a branch rule is deliberately off** and must stay off: a commit made inside a runner is unsigned, so the rule would break every release. Signing your own commits locally is a different thing, and the registrar's `provenance` job is where it matters.
+The ruleset on `main` blocks deletion and force-pushes and requires linear history, and deliberately stops there: a rule requiring pull requests, passing checks or signed commits would also reject the release job's own push. So the pull-request discipline is a convention held to by the maintainer, and a red check is yours to fix. The reasoning is on the [releasing page](https://github.com/noelmcloughlin/lokf-agent-skills/blob/main/docs/releasing.md#what-the-repository-settings-mean-for-you).
 
 ## License
 

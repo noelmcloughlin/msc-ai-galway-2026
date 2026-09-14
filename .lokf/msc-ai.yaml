@@ -2,16 +2,12 @@ id: https://msc-ai.example/schema/msc-ai
 name: msc-ai
 title: MSc Artificial Intelligence domain extension
 description: >-
-  Gives the MSc-AI bundle its own small vocabulary on top of LOKF core, per
-  lokf-agent-skills' domain-schemas.md guidance ("give the domain its own
-  schema" rather than inventing a validation mechanism). LOKF's generated
-  JSON Schema sets `additionalProperties: false` on every concept class, so a
-  concept using a project-specific `type` (Programme, Module,
-  VerificationIssue, ...) or carrying a project-specific slot fails
-  structural validation even though the LOKF *spec* prose says consumers
-  "MUST tolerate unknown types/keys" - that tolerance is an RDF/JSON-LD
-  consumption rule, not a JSON-Schema one. This file is what makes
-  `lokf validate --schema msc-ai.yaml` accept this bundle's real shape.
+  Extends the LOKF vocabulary into this domain: imports the pinned core
+  schema and adds the classes and slots a degree programme needs
+  (Programme, Module, VerificationIssue, ...), per lokf-agent-skills'
+  domain-schema guidance - give the domain its own schema rather than
+  inventing a validation mechanism. `lokf validate --schema msc-ai.yaml`
+  checks every record against core and domain together.
 license: https://creativecommons.org/licenses/by/4.0/
 version: 0.1.0
 
@@ -44,14 +40,10 @@ prefixes:
 # preserved source snapshot exactly) and IngestionPlaybook (is_a Playbook -
 # "a procedure... an ordered set of steps" fits the ingestion process).
 #
-# Their frontmatter `type:` is the SUBCLASS name, not the parent's - tested
-# empirically: LinkML generates each concrete class's `type` property as
-# `const: <ClassName>`, so `type: Reference` on a record carrying file_name/
-# source_kind/etc. fails every anyOf branch (Reference's own schema rejects
-# the extra keys via additionalProperties: false; SourceSnapshotReference's
-# schema requires `type` to literally read "SourceSnapshotReference"). `is_a`
-# still makes each one rdfs:subClassOf its parent for real RDF/OWL reasoning
-# - only the raw frontmatter string differs from the plain parent name.
+# Their frontmatter `type:` is the SUBCLASS name, not the parent's: the
+# validator pins each class's `type` to its own name, and a built-in class
+# does not accept the extra slots. `is_a` still makes each one
+# rdfs:subClassOf its parent in the projected graph.
 # ---------------------------------------------------------------------------
 classes:
 

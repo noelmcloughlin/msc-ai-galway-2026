@@ -1,23 +1,21 @@
 ---
-type: Reference
-genre: reference
 title: <% tp.file.title %>
 description:
-resource:
+source:
 authors: []
 year:
 venue:
-about:
+module:
 tags:
   - paper
-created: <% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>
+created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 ---
 
 # <% tp.file.title %>
 
-<%* /* A literature note. `type: Reference` is LOKF's class for "mirrors an external source
-       as a first-class citizen so it can be cited and linked".
-       `resource:` is the DOI or URL - fill it in, it is what makes the claim checkable. */ %>
+<%* /* A literature note. `source:` is the DOI or URL - fill it in, it is what makes
+       the claim checkable, and the same property a web clip arrives with.
+       The Papers view in Vault.base reads `year`, `venue` and `source`. */ %>
 
 **Citation:**
 **Link:**

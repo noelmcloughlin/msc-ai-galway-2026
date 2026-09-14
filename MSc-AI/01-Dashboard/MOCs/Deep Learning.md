@@ -1,5 +1,4 @@
 ---
-type: Document
 title: Deep Learning
 description: Map of content over everything in the vault and the bundle about deep learning.
 tags: [moc, example]

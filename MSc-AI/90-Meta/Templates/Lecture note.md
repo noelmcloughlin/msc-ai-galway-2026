@@ -1,9 +1,7 @@
 ---
-type: Document
 title: <% tp.file.title %>
 description:
 module:
-about:
 tags: [lecture]
 created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 ---
@@ -12,8 +10,7 @@ created: '<% tp.date.now("YYYY-MM-DDTHH:mm:ssZ") %>'
 
 <%* /* A dated record of one lecture. Episodic - it stays in the vault, it does not
        graduate. What you *learn* from it becomes a Concept note, which does.
-       Set `module:` to the code (CT5145) and `about:` to the module's bundle record
-       (`[[module-ct5145]]`). */ %>
+       Set `module:` to the code (CT5145); the Lectures view in Vault.base groups by it. */ %>
 
 **Module:**
 **Date:** <% tp.date.now("YYYY-MM-DD") %>

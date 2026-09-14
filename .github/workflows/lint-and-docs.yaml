@@ -4,8 +4,16 @@ name: Lint & docs
 # never touches the LOKF bundle's own semantics (see knowledge-registrar.yaml) -
 # this is the same CI-hardening pass the sibling LOKF repositories run.
 on:
+  # push and pull_request both firing on every branch used to run this
+  # workflow twice for the same commit - once on landing, again when the PR
+  # using that branch opened or synchronized, since the two events aren't
+  # deduplicated by SHA (concurrency doesn't catch it either: github.ref
+  # differs between a push and a pull_request event for the same commit).
+  # push is scoped to main, matching semantic-release.yml elsewhere in this
+  # family - an open PR can never have main as its head, so the two triggers
+  # can no longer cover the same commit.
   push:
-    branches: ['**']
+    branches: [main]
   pull_request:
     branches: ['**']
   schedule:
@@ -53,6 +61,17 @@ jobs:
         uses: docker://rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 # v1.7.12
         with:
           args: -color
+      # actionlint checks syntax, not pinning. A tag or branch ref floats, so
+      # every `uses:` must name a commit SHA (or an image digest), with the
+      # version in a trailing comment for Dependabot to bump.
+      - name: Every action is pinned to a commit
+        run: |
+          if grep -rnE '^\s*-?\s*uses:' .github/workflows/ \
+            | grep -vE '@([0-9a-f]{40}|sha256:[0-9a-f]{64})\b' \
+            | grep -vE 'uses:\s*\./'; then
+            echo '::error::the action(s) above are not pinned to a commit SHA' >&2
+            exit 1
+          fi
 
   validate-markdown:
     name: Lint Markdown & check links
@@ -80,3 +99,27 @@ jobs:
         uses: codespell-project/actions-codespell@e3258cca84ce02b0bb36a3d41f2c18f719a0cc1a # v2.4.3
         with:
           path: '**/*.md'
+      # CONTRIBUTING.md is a checklist, not a design log, and SECURITY.md is
+      # a policy, not a threat model: each rule or surface is a line or two
+      # that links to where its reasoning lives. A word budget is the one
+      # signal every contributor, person or agent, reliably reads.
+      # CONTRIBUTING sits between 700 and 850 across the four LOKF
+      # repositories and 1000 is where one has started to become a design
+      # log again; SECURITY sits between 450 and 800 and was 1,400 to 1,900
+      # before the skills repository's docs/threat-model.md took the design,
+      # so 900 is its line. The siblings hold the same budgets from their
+      # own test scripts.
+      - name: CONTRIBUTING.md and SECURITY.md stay short
+        run: |
+          status=0
+          for spec in CONTRIBUTING.md:1000 SECURITY.md:900; do
+            file=${spec%%:*}
+            budget=${spec##*:}
+            words=$(wc -w < "$file")
+            if [ "$words" -gt "$budget" ]; then
+              echo "::error file=$file::$words words; the budget is $budget. Move the reasoning next to the code or workflow it explains, or into the skills repository's docs/, and link to it." >&2
+              status=1
+            fi
+            echo "$file is $words words (budget $budget)"
+          done
+          exit "$status"

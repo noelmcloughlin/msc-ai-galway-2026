@@ -1,6 +1,90 @@
 # Change Log
 
+## 2026-09-14
+
+* **Steady-state refresh** (librarian pass; no `feedback.md` to consume), against the three commits
+  since the 13:00 pass - `f625f0b`, `f985511` and `80308a5`. No concept changed: the first two touch
+  the registrar workflow, the conventions script and two records already corrected at 15:19, and the
+  third is `SECURITY.md`, `lint-and-docs.yaml` and `CHANGELOG.md`, all of which this bundle
+  consciously leaves out of scope. No vault note changed, and the four external sources were
+  re-fetched with zero drift five hours earlier, so nothing was re-fetched and no `verified` event
+  was refreshed except this map's own. **Drift found and reported, not fixed:** `80308a5` refreshed
+  the plugin builds in the workshop vault (`MSc-AI/.obsidian/plugins/`) only, leaving the exhibition
+  vault (`.lokf/knowledge/.obsidian/plugins/`) on older copies of both plugins - LOKF Curator's
+  manifest there still reads `1.0.0` against the workshop's `1.1.0`, and both plugins' `main.js`
+  differ between the vaults while the workshop's byte-match the current builds. The same divergence
+  was recorded as fixed before 1.0.1 and has recurred, so `playbooks/knowledge-sources.md` now names
+  both plugin directories under **Consciously left out**, with how to check them and why the fix is
+  the maintainer's rather than a refresh's.
+
+* **Steady-state refresh** (librarian pass; no `feedback.md` to consume). Re-fetched all four live/primary
+  sources raw and found zero drift: the University page (module semester/credits, the "12 taught modules"
+  sentence, the "Year 1 (90 Credits)" heading, the grammar-exam sentence, workload/assessment/capstone/
+  transferable-skills wording, the ten teaching-team names), the ICT Skillnet page (the Core/Optional split,
+  the `CT5186` omission), the Vaswani et al. 2017 paper (fetched in full this time, not just the abstract -
+  confirmed §3.1's encoder/decoder residual+layernorm description and §3.2's scaled dot-product/multi-head
+  attention formulas against `concepts/self-attention` and `concepts/transformer`) and the Deep Learning
+  book's §4.3 (confirmed against `concepts/gradient-descent`, working around the same word-splitting the
+  2026-09-13 pass noted). Refreshed `verified` (`process:lokf-librarian`, 2026-09-14T13:00:00Z) on the 52
+  concepts actually re-checked: the programme, all 15 modules, the ten people, ten roles and the teaching
+  team, the four programme patterns, the four verification issues, the two live source records, the Vaswani
+  reference, the two concepts newly checked against the full paper, `concepts/gradient-descent`, and
+  `playbooks/obsidian-workshop.md` (checked locally against `README.md` and `CONVENTIONS.md` - five
+  templates, six tags, five `Vault.base` views, all on disk as recorded; gains its first `verified` event).
+  Not re-checked, so no event: the glossary term and the ingestion playbook (no `resource`) and the extract
+  record (source file still gone). Orphan sweep of `MSc-AI/` and `.lokf/` found nothing new -
+  `10-Programme/Modules/CT5145 - Deep Learning/Week 1 - What deep learning is.md` is the file
+  `playbooks/knowledge-sources.md` already covers generically as "the CT5145 lecture note". `lokf` on PyPI
+  is still 0.7.0, matching the pinned copy and the floor. `just lokf-validate` and `just lokf-check-refs`
+  both pass on all 56 concepts.
+
+* **The host's own vocabulary is now written down where a refresh will find it.**
+  `playbooks/knowledge-sources.md` gains a section saying that `.lokf/justfile`
+  validates with `--schema msc-ai.yaml`, so this bundle's vocabulary is the core
+  fifteen classes plus that schema's own, and that `lokf.yaml` beside it is a
+  pinned 0.7.0 copy to be refreshed with any future floor bump. `index.md`'s
+  paragraph on the schema, which still read as an explanation of why a
+  workaround was necessary, now states plainly that the bundle extends the
+  vocabulary into its domain. Checked this pass: the table of contents lists
+  all 56 concepts; `playbooks/obsidian-workshop.md` matches the five templates,
+  the six tags and `Vault.base`'s five views on disk; `lokf` on PyPI is 0.7.0,
+  matching the pinned copy and the floor.
+
+* **Steady-state refresh** (librarian pass; no `feedback.md` to consume), against a `release/1.1.0`
+  merge in progress. The vault dropped this bundle's vocabulary from every seeded note and template:
+  `type`, `genre`, `about` and `resource` are gone from `MSc-AI/`; what a note is is now a tag
+  (`lecture`, `lab`, `paper`, `concept`, `daily`, `moc`), and `source:` - the property the Web
+  Clipper already writes - replaces `resource:`. `CONVENTIONS.md`'s Frontmatter section became a
+  Properties section stating this in one table; the README's Part 1 and the templates match.
+  Rewrote `playbooks/obsidian-workshop.md` for tags and `source:`, and
+  `playbooks/knowledge-sources.md`'s sweep bullets to match, with a run note. This bundle's
+  vocabulary is now something only this bundle carries: the librarian writes it when a note
+  graduates, never the workshop note itself.
+* **`msc-ai.yaml` and `.lokf/README.md` reworded**, following the same change upstream in
+  `lokf-agent-skills` (`lokf-librarian/references/domain-schema.md`, added 2026-09-14): extending
+  the LOKF vocabulary into a domain is the intended path, not a workaround for an upstream defect.
+  The schema's header and `is_a` comments and the README's two mentions now say so and point at the
+  upstream recipe. No schema content or validation behaviour changed; `README.md`'s caveat follows.
+* **Correction to "Schema extension" below (2026-09-12).** That entry's diagnosis - "a record's
+  `type:` string is checked only for being a string, never matched against the class it names" - is
+  wrong, found while writing the upstream page above. `type` *is* matched, by LinkML's type-designator
+  mechanism (each class's generated schema pins `type` to an `enum` of its own name), which is why an
+  unknown type, or an extra key on a known one, fails every branch of the `anyOf` at once with no
+  branch left to name the problem. The fix that entry describes - `msc-ai.yaml` importing a pinned
+  `lokf.yaml`, validated with `--schema` - is unaffected; only its stated reason was wrong. The
+  original entry stands as written: `log.md` is a history, and this entry is the correction.
+
 ## 2026-09-13
+
+* **Steady-state refresh** (librarian pass; no `feedback.md` to consume). The repository README was
+  rewritten Obsidian-first and the vault gained daily notes (`02-Daily/`), `01-Dashboard/Vault.base`
+  and a `Daily note` template. Added `playbooks/obsidian-workshop.md` (Playbook, how-to, draft): the
+  workshop's daily loop, weekly sweep and what the folders mean, derived from the README's Part 1 and
+  `MSc-AI/01-Dashboard/CONVENTIONS.md` - a daily note or a base is not knowledge, the procedure is.
+  `playbooks/knowledge-sources.md` (`generated` refreshed) records the new fixtures and where to
+  re-check. `index.md` lists the playbook and no longer points at `../01-Dashboard/CONVENTIONS.md`, a
+  path from before the bundle moved out of the vault. `concepts/self-attention.md` drops the word
+  "showcase" from its status line, as the repository has; nothing else about it changed.
 
 * **Steady-state refresh** (third pass): the four live sources re-fetched raw - the University page, the ICT Skillnet page, the arXiv abstract and the Deep Learning book's chapter 4 - and 49 records re-verified against them (`verified` by `process:lokf-librarian`, 2026-09-13): the programme; all 15 modules, whose semester and credits are unchanged and which had carried no `verified` event since the 2026-09-11 edit that added those fields; the ten people, their ten roles and the teaching team; the four programme patterns; the four verification issues, each contradiction still present in the live sources (`verification-issue-assessment-leakage` now quotes the sentence as it stands on the live page, not only in the extract); the two live source records (`reviewed_at` 2026-09-13); the Vaswani reference; and `concepts/gradient-descent`. Not re-checked, so no event: `concepts/self-attention` and `concepts/transformer` (their section 3.2 claims are not on the abstract page this run could fetch), the glossary term, the ingestion playbook and the extract record (no live `resource`).
 * **Index**: the pointer to the vault's `CONVENTIONS.md` still used the path from when the bundle lived inside the vault; it now names `MSc-AI/01-Dashboard/CONVENTIONS.md` from the repository root.
