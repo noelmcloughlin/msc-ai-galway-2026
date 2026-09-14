@@ -34,7 +34,7 @@ Open Obsidian → **Open folder as vault** → `MSc-AI/`. Nothing about the bund
 
 ### Plugins
 
-Community plugins run third-party code, so Obsidian starts in *Restricted mode* until you [turn them on](https://obsidian.md/help/community-plugins). One is switched on in this vault: **Templater**, for the smarter templates (date, title, prompts). **LOKF Registrar** and **LOKF Curator** are installed here but off; they belong to the exhibition vault in Part 2 and would report *no bundle* if you turned them on.
+Community plugins run third-party code, so Obsidian starts in *Restricted mode* until you [turn them on](https://obsidian.md/help/community-plugins). One is switched on in this vault: **Templater**, for the smarter templates (date, title, prompts).
 
 One browser extension, which is not a vault plugin: **[Obsidian Web Clipper](https://obsidian.md/help/web-clipper)**, the official one. For a course that lives on the web, it is the essential piece.
 
