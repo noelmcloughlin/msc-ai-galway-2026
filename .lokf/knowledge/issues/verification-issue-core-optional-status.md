@@ -11,7 +11,7 @@ generated:
   at: "2026-09-11T00:00:00Z"
 verified:
   - by: process:lokf-librarian
-    at: "2026-09-13T23:30:00Z"
+    at: "2026-09-14T13:00:00Z"
 tags:
   - "assertion:inferred"
 derivedFrom:

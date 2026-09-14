@@ -1,5 +1,28 @@
 # Change Log
 
+## 2026-09-14 (3)
+
+* **Steady-state refresh** (librarian pass; no `feedback.md` to consume). Re-fetched all four live/primary
+  sources raw and found zero drift: the University page (module semester/credits, the "12 taught modules"
+  sentence, the "Year 1 (90 Credits)" heading, the grammar-exam sentence, workload/assessment/capstone/
+  transferable-skills wording, the ten teaching-team names), the ICT Skillnet page (the Core/Optional split,
+  the `CT5186` omission), the Vaswani et al. 2017 paper (fetched in full this time, not just the abstract -
+  confirmed §3.1's encoder/decoder residual+layernorm description and §3.2's scaled dot-product/multi-head
+  attention formulas against `concepts/self-attention` and `concepts/transformer`) and the Deep Learning
+  book's §4.3 (confirmed against `concepts/gradient-descent`, working around the same word-splitting the
+  2026-09-13 pass noted). Refreshed `verified` (`process:lokf-librarian`, 2026-09-14T13:00:00Z) on the 52
+  concepts actually re-checked: the programme, all 15 modules, the ten people, ten roles and the teaching
+  team, the four programme patterns, the four verification issues, the two live source records, the Vaswani
+  reference, the two concepts newly checked against the full paper, `concepts/gradient-descent`, and
+  `playbooks/obsidian-workshop.md` (checked locally against `README.md` and `CONVENTIONS.md` - five
+  templates, six tags, five `Vault.base` views, all on disk as recorded; gains its first `verified` event).
+  Not re-checked, so no event: the glossary term and the ingestion playbook (no `resource`) and the extract
+  record (source file still gone). Orphan sweep of `MSc-AI/` and `.lokf/` found nothing new -
+  `10-Programme/Modules/CT5145 - Deep Learning/Week 1 - What deep learning is.md` is the file
+  `playbooks/knowledge-sources.md` already covers generically as "the CT5145 lecture note". `lokf` on PyPI
+  is still 0.7.0, matching the pinned copy and the floor. `just lokf-validate` and `just lokf-check-refs`
+  both pass on all 56 concepts.
+
 ## 2026-09-14 (2)
 
 * **The host's own vocabulary is now written down where a refresh will find it.**

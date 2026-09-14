@@ -43,6 +43,24 @@ jobs:
         run: uv sync
         working-directory: .lokf
 
+      # Host-specific step, not in the lokf-sidecar template: this bundle
+      # validates against a domain schema, so it keeps a pinned copy of the
+      # core schema for msc-ai.yaml to import. A stale copy still validates -
+      # against a vocabulary the toolkit has moved past - so nothing else
+      # catches it. Same check as `just lokf-check-pin`, inlined so the job
+      # needs no extra tooling.
+      - name: Check the pinned core schema matches the toolkit floor
+        run: |
+          pinned="$(grep -m1 '^version:' lokf.yaml | awk '{print $2}')"
+          floor="$(grep -o 'lokf\[build\]>=[0-9][0-9.]*' pyproject.toml | head -1 | sed 's/.*>=//')"
+          if [ "$pinned" = "$floor" ]; then
+            echo "OK - pinned lokf.yaml $pinned matches the lokf[build] floor"
+          else
+            echo "::error::lokf.yaml is pinned at $pinned but pyproject.toml floors lokf[build] at $floor - refresh the pinned copy in the same change as the bump"
+            exit 1
+          fi
+        working-directory: .lokf
+
       - name: Validate the knowledge bundle
         run: uv run lokf validate --schema msc-ai.yaml knowledge
         working-directory: .lokf
